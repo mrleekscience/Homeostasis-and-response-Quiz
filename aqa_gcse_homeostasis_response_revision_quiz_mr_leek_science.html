@@ -1,0 +1,2742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AQA GCSE Homeostasis &amp; Response Revision Quiz — Mr Leek Science</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #f1f5f9;
+      color: #0f172a;
+    }
+    .option-card {
+      transition: all 0.16s ease;
+    }
+    .option-card:hover:not(:disabled) {
+      transform: translateY(-1px);
+    }
+    .fade-in {
+      animation: fadeIn 0.22s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-slate-100 text-slate-900">
+
+  <!-- TOP NAVIGATION BAR -->
+  <header class="bg-slate-900 text-white shadow-md sticky top-0 z-30 border-b border-slate-800">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3.5">
+        <img
+          id="brandLogoImg"
+          src="mr leek science.jpg"
+          onerror="handleLogoFallback(this)"
+          alt="Mr Leek Science Logo"
+          class="h-12 sm:h-14 w-auto object-contain rounded-xl bg-white p-0.5 shadow-sm"
+        />
+        <div id="brandLogoFallback" class="hidden h-12 sm:h-14 w-12 sm:w-14 rounded-xl bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center text-white font-extrabold text-lg shadow-sm shrink-0">
+          MLS
+        </div>
+        <div>
+          <h1 class="text-base sm:text-lg font-extrabold tracking-tight text-white leading-snug">
+            AQA GCSE Homeostasis &amp; Response Revision Quiz
+          </h1>
+          <p class="text-xs sm:text-sm text-teal-300 font-medium">
+            Mr Leek Science &bull; AQA GCSE Biology &bull; Paper 2 &bull; Topic 5
+          </p>
+        </div>
+      </div>
+
+      <div id="headerControls" class="hidden flex items-center gap-2 sm:gap-3">
+        <span id="headerStudentBadge" class="hidden sm:inline-flex items-center gap-1.5 bg-slate-800 text-slate-200 text-xs font-semibold px-3 py-1.5 rounded-full border border-slate-700">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span id="headerStudentName">Student</span>
+        </span>
+        <button
+          type="button"
+          onclick="confirmReturnHome()"
+          class="text-xs sm:text-sm font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 transition"
+        >
+          Menu
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
+
+    <!-- ==================== VIEW 1: START SCREEN ==================== -->
+    <section id="startScreen" class="fade-in">
+      <div class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+        <!-- Top Banner -->
+        <div class="bg-gradient-to-r from-slate-900 via-teal-900 to-emerald-900 px-6 py-6 sm:px-8 text-white">
+          <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-teal-200 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-2.5">
+            Topic 5 &bull; Paper 2 Revision (8461 &amp; 8464)
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+            Configure Your Homeostasis &amp; Response Quiz
+          </h2>
+          <p class="text-slate-200 text-sm sm:text-base mt-1.5 max-w-2xl">
+            Enter your name, choose your tier, select either all Topic 5 content or Required Practicals only, and pick your question count.
+          </p>
+        </div>
+
+        <form id="quizSetupForm" onsubmit="handleStartQuiz(event)" novalidate class="p-6 sm:p-8 space-y-7">
+
+          <!-- 1. STUDENT DETAILS ROW -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+            <div>
+              <label for="studentNameInput" class="block text-sm font-bold text-slate-800 mb-1.5">
+                Student Name <span class="text-rose-600 font-extrabold">*</span>
+              </label>
+              <input
+                type="text"
+                id="studentNameInput"
+                placeholder="Enter your full name"
+                maxlength="50"
+                autocomplete="name"
+                oninput="clearValidationError()"
+                class="w-full rounded-xl border-2 border-slate-300 bg-slate-50 focus:bg-white focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20 px-4 py-3 text-slate-900 font-medium outline-none transition"
+              />
+            </div>
+
+            <div>
+              <label for="studentEmailInput" class="block text-sm font-bold text-slate-800 mb-1.5">
+                Email Address <span class="text-slate-400 font-medium">(Optional)</span>
+              </label>
+              <input
+                type="email"
+                id="studentEmailInput"
+                placeholder="e.g. student@school.co.uk"
+                maxlength="80"
+                autocomplete="email"
+                class="w-full rounded-xl border-2 border-slate-300 bg-slate-50 focus:bg-white focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20 px-4 py-3 text-slate-900 font-medium outline-none transition"
+              />
+            </div>
+          </div>
+
+          <!-- 2. SELECT TIER / PATHWAY -->
+          <div>
+            <div class="flex items-center justify-between mb-2.5">
+              <span class="text-sm font-bold text-slate-800">Select Tier / Pathway</span>
+              <span id="tierCountHint" class="text-xs font-semibold text-teal-700 bg-teal-50 px-2.5 py-1 rounded-full border border-teal-200">
+                Higher Tier Selected
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5" id="tierSelectorGroup">
+              <!-- Foundation -->
+              <button
+                type="button"
+                data-tier="foundation"
+                onclick="selectTier('foundation')"
+                class="tier-btn text-left p-4 rounded-2xl border-2 border-slate-200 bg-slate-50 hover:border-teal-400 transition relative flex flex-col justify-between"
+              >
+                <div class="flex items-start justify-between gap-2">
+                  <div>
+                    <span class="inline-block text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-sky-100 text-sky-800 mb-1.5">
+                      Combined 8464
+                    </span>
+                    <h3 class="text-base font-extrabold text-slate-900">Foundation Tier</h3>
+                  </div>
+                  <span class="tier-check w-6 h-6 rounded-full border-2 border-slate-300 flex items-center justify-center text-white text-xs font-bold shrink-0">
+                    ✓
+                  </span>
+                </div>
+                <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                  Core homeostasis, nervous system &amp; reflex arcs, reaction time practical, insulin &amp; diabetes, menstrual cycle &amp; contraception (Grades 1–5).
+                </p>
+              </button>
+
+              <!-- Higher (Default Active) -->
+              <button
+                type="button"
+                data-tier="higher"
+                onclick="selectTier('higher')"
+                class="tier-btn text-left p-4 rounded-2xl border-2 border-teal-600 bg-teal-50/60 shadow-sm transition relative flex flex-col justify-between"
+              >
+                <div class="flex items-start justify-between gap-2">
+                  <div>
+                    <span class="inline-block text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-teal-100 text-teal-800 mb-1.5">
+                      Combined 8464
+                    </span>
+                    <h3 class="text-base font-extrabold text-slate-900">Higher Tier</h3>
+                  </div>
+                  <span class="tier-check w-6 h-6 rounded-full border-2 border-teal-600 bg-teal-600 flex items-center justify-center text-white text-xs font-bold shrink-0">
+                    ✓
+                  </span>
+                </div>
+                <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                  Includes glucagon &amp; negative feedback, menstrual hormone interactions, IVF fertility drugs, thyroxine &amp; adrenaline (Grades 4–9).
+                </p>
+              </button>
+
+              <!-- Separate Biology -->
+              <button
+                type="button"
+                data-tier="separate"
+                onclick="selectTier('separate')"
+                class="tier-btn text-left p-4 rounded-2xl border-2 border-slate-200 bg-slate-50 hover:border-teal-400 transition relative flex flex-col justify-between"
+              >
+                <div class="flex items-start justify-between gap-2">
+                  <div>
+                    <span class="inline-block text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-purple-100 text-purple-800 mb-1.5">
+                      Triple 8461
+                    </span>
+                    <h3 class="text-base font-extrabold text-slate-900">Separate Biology</h3>
+                  </div>
+                  <span class="tier-check w-6 h-6 rounded-full border-2 border-slate-300 flex items-center justify-center text-white text-xs font-bold shrink-0">
+                    ✓
+                  </span>
+                </div>
+                <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                  Full 8461 content: The Brain, The Eye &amp; Accommodation, Body Temperature, Kidneys &amp; ADH, and Plant Hormones &amp; Tropisms (Grades 1–9).
+                </p>
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. QUIZ FOCUS (Dedicated Box for Required Practicals Only) -->
+          <div>
+            <span class="block text-sm font-bold text-slate-800 mb-2.5">Quiz Focus</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <!-- All Homeostasis & Response Topics -->
+              <button
+                type="button"
+                id="modeAllBtn"
+                onclick="selectMode('all')"
+                class="text-left p-4 rounded-2xl border-2 border-teal-600 bg-teal-50/60 shadow-sm transition flex items-start gap-3.5"
+              >
+                <div id="modeAllIcon" class="w-10 h-10 rounded-xl bg-teal-600 text-white flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between">
+                    <h4 class="font-extrabold text-slate-900 text-sm sm:text-base">All Homeostasis &amp; Response Topics</h4>
+                    <span id="modeAllCheck" class="text-teal-600 font-extrabold text-sm">✓</span>
+                  </div>
+                  <p class="text-xs text-slate-600 mt-1">
+                    Covers nervous system, reflexes, blood glucose, diabetes, reproductive hormones, negative feedback &amp; tier exclusives.
+                  </p>
+                </div>
+              </button>
+
+              <!-- Dedicated Separate Box: Required Practicals Only -->
+              <button
+                type="button"
+                id="modeRpBtn"
+                onclick="selectMode('rp')"
+                class="text-left p-4 rounded-2xl border-2 border-slate-200 bg-amber-50/40 hover:border-amber-400 transition flex items-start gap-3.5"
+              >
+                <div id="modeRpIcon" class="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3v4.5m4.5-4.5v4.5M6 7.5h12M7.5 7.5l-1.5 11.25A2.25 2.25 0 008.25 21h7.5a2.25 2.25 0 002.25-2.25L16.5 7.5" />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between gap-2">
+                    <h4 class="font-extrabold text-slate-900 text-sm sm:text-base">Required Practicals Only</h4>
+                    <span id="modeRpCheck" class="hidden text-amber-600 font-extrabold text-sm">✓</span>
+                  </div>
+                  <p id="modeRpDesc" class="text-xs text-slate-600 mt-1">
+                    Focused practical drill: RP7 Combined / RP6 Separate Human Reaction Time (Ruler Drop) &amp; Separate RP8 Plant Tropisms.
+                  </p>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- 4. NUMBER OF QUESTIONS -->
+          <div>
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+              <span class="text-sm font-bold text-slate-800">Number of Questions</span>
+              <div class="flex items-center gap-2">
+                <span id="poolAvailabilityText" class="text-xs font-medium text-slate-500">
+                  66 unique questions available
+                </span>
+                <span id="cappedPoolBadge" class="hidden text-[11px] font-bold bg-amber-100 text-amber-800 px-2.5 py-0.5 rounded-full border border-amber-300">
+                  Capped to max available
+                </span>
+              </div>
+            </div>
+            <div class="grid grid-cols-5 gap-2 sm:gap-3" id="countSelectorGroup">
+              <button type="button" data-count="10" onclick="selectCount(10)" class="count-btn py-3 px-2 rounded-xl border-2 border-slate-200 bg-slate-50 hover:border-teal-400 text-slate-800 font-extrabold text-sm sm:text-base transition">
+                10
+              </button>
+              <button type="button" data-count="20" onclick="selectCount(20)" class="count-btn py-3 px-2 rounded-xl border-2 border-teal-600 bg-teal-600 text-white font-extrabold text-sm sm:text-base shadow-sm transition">
+                20
+              </button>
+              <button type="button" data-count="30" onclick="selectCount(30)" class="count-btn py-3 px-2 rounded-xl border-2 border-slate-200 bg-slate-50 hover:border-teal-400 text-slate-800 font-extrabold text-sm sm:text-base transition">
+                30
+              </button>
+              <button type="button" data-count="50" onclick="selectCount(50)" class="count-btn py-3 px-2 rounded-xl border-2 border-slate-200 bg-slate-50 hover:border-teal-400 text-slate-800 font-extrabold text-sm sm:text-base transition">
+                50
+              </button>
+              <button type="button" data-count="80" onclick="selectCount(80)" class="count-btn py-3 px-2 rounded-xl border-2 border-slate-200 bg-slate-50 hover:border-teal-400 text-slate-800 font-extrabold text-sm sm:text-base transition">
+                80
+              </button>
+            </div>
+          </div>
+
+          <!-- 5. BOTTOM ACTION FOOTER -->
+          <div class="pt-4 border-t border-slate-200 space-y-3">
+            <div id="validationAlert" class="hidden rounded-xl bg-rose-50 border border-rose-300 text-rose-800 px-4 py-3 text-sm font-semibold flex items-center gap-2">
+              <svg class="w-5 h-5 text-rose-600 shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+              </svg>
+              <span>Please enter your Student Name before starting the quiz.</span>
+            </div>
+
+            <button
+              type="submit"
+              id="startQuizBtn"
+              class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-extrabold text-base sm:text-lg shadow-lg shadow-teal-600/20 transition transform active:scale-[0.99] flex items-center justify-center gap-2"
+            >
+              <span id="startBtnLabel">Start Higher Tier Quiz (20 Questions)</span>
+              <span aria-hidden="true">&rarr;</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 2: ACTIVE QUIZ ==================== -->
+    <section id="quizScreen" class="hidden fade-in space-y-5">
+      <!-- Progress & Metadata Header -->
+      <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-200">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <div class="flex items-center gap-2 flex-wrap">
+            <span id="quizTierBadge" class="text-xs font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-lg bg-teal-100 text-teal-800">
+              Higher Tier
+            </span>
+            <span id="quizTopicBadge" class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700">
+              Homeostasis &amp; Nervous System
+            </span>
+            <span id="quizFocusBadge" class="hidden text-xs font-extrabold px-2.5 py-1 rounded-lg bg-amber-100 text-amber-800 border border-amber-300">
+              Required Practical
+            </span>
+          </div>
+
+          <div class="flex items-center gap-4 text-sm font-bold text-slate-700">
+            <span id="questionCounterText">Question 1 of 20</span>
+            <span class="text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-lg border border-emerald-200">
+              Score: <span id="liveScoreText">0</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+          <div id="quizProgressBar" class="h-full bg-gradient-to-r from-teal-500 to-emerald-500 transition-all duration-300" style="width: 5%;"></div>
+        </div>
+      </div>
+
+      <!-- Question Card -->
+      <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-slate-200">
+        <h3 id="questionPrompt" class="text-lg sm:text-xl font-bold text-slate-900 leading-relaxed mb-6">
+          Loading question...
+        </h3>
+
+        <!-- Options List -->
+        <div id="optionsContainer" class="space-y-3"></div>
+
+        <!-- Instant AQA Mark-Scheme Feedback Box -->
+        <div id="feedbackBox" class="hidden mt-6 rounded-2xl p-5 border-2 fade-in">
+          <div class="flex items-start gap-3">
+            <div id="feedbackIcon" class="w-7 h-7 rounded-full flex items-center justify-center font-extrabold text-sm shrink-0 mt-0.5"></div>
+            <div class="flex-1">
+              <h4 id="feedbackHeading" class="font-extrabold text-base"></h4>
+              <p id="feedbackExplanation" class="text-sm mt-1.5 leading-relaxed"></p>
+            </div>
+          </div>
+
+          <div class="mt-5 flex justify-end">
+            <button
+              type="button"
+              id="nextQuestionBtn"
+              onclick="handleNextQuestion()"
+              class="px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm sm:text-base transition flex items-center gap-2 shadow"
+            >
+              <span id="nextBtnText">Next Question</span>
+              <span>&rarr;</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 3: DIAGNOSTIC REPORT ==================== -->
+    <section id="resultsScreen" class="hidden fade-in space-y-6">
+      <!-- Summary Hero Card -->
+      <div class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+        <div class="bg-gradient-to-r from-slate-900 via-teal-900 to-emerald-900 p-6 sm:p-8 text-white">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <span class="inline-block text-xs font-bold uppercase tracking-wider bg-white/15 text-teal-200 px-3 py-1 rounded-full mb-2">
+                AQA GCSE Homeostasis &amp; Response Diagnostic Report
+              </span>
+              <h2 id="reportStudentTitle" class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+                Diagnostic Report: Student
+              </h2>
+              <p id="reportMetaSubtitle" class="text-sm text-slate-200 mt-1">
+                Higher Tier &bull; All Homeostasis &amp; Response Topics
+              </p>
+            </div>
+
+            <div class="flex items-center gap-3 shrink-0">
+              <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-3.5 text-center">
+                <div id="reportPercentage" class="text-3xl sm:text-4xl font-extrabold text-emerald-300">
+                  0%
+                </div>
+                <div id="reportFraction" class="text-xs sm:text-sm font-semibold text-slate-200 mt-0.5">
+                  0 / 20 Correct
+                </div>
+              </div>
+              <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-3.5 text-center">
+                <div id="reportGradeBadge" class="text-2xl sm:text-3xl font-extrabold text-amber-300">
+                  Grade 5
+                </div>
+                <div class="text-[11px] font-semibold text-slate-200 mt-0.5 uppercase tracking-wide">
+                  Est. Grade
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons Row -->
+        <div class="p-5 sm:p-6 bg-slate-50 border-b border-slate-200 flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            id="retryMissedBtn"
+            onclick="startMissedQuestionsQuiz()"
+            class="hidden px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold text-sm shadow-sm transition flex items-center gap-2"
+          >
+            <span>Retry Missed Questions (<span id="missedCountLabel">0</span>)</span>
+          </button>
+
+          <button
+            type="button"
+            onclick="copyResultsSummary()"
+            class="px-4 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm shadow-sm transition flex items-center gap-2"
+          >
+            <span id="copyBtnLabel">Copy Results Summary</span>
+          </button>
+
+          <a
+            id="emailResultsLink"
+            href="#"
+            class="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 font-bold text-sm transition flex items-center gap-2"
+          >
+            <span>Email Results</span>
+          </a>
+
+          <button
+            type="button"
+            onclick="returnToMenu()"
+            class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-bold text-sm transition ml-auto"
+          >
+            New Quiz / Change Settings
+          </button>
+        </div>
+
+        <!-- Topic-by-Topic Breakdown -->
+        <div class="p-6 sm:p-8">
+          <h3 class="text-lg font-extrabold text-slate-900 mb-1">Topic-by-Topic Performance Breakdown</h3>
+          <p class="text-xs sm:text-sm text-slate-500 mb-5">
+            Identify your strongest areas in Homeostasis &amp; Response (&ge;70%) and prioritise topics needing further revision (&lt;70%).
+          </p>
+          <div id="topicBreakdownContainer" class="space-y-4"></div>
+        </div>
+      </div>
+
+      <!-- Question Review List -->
+      <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 sm:p-8">
+        <h3 class="text-lg font-extrabold text-slate-900 mb-4">Question-by-Question Review</h3>
+        <div id="questionReviewList" class="space-y-4"></div>
+      </div>
+    </section>
+
+    <!-- Custom In-App Confirmation Modal -->
+    <div id="confirmModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+      <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
+        <h3 class="text-lg font-extrabold text-slate-900">Return to Quiz Menu?</h3>
+        <p class="text-sm text-slate-600 mt-2">
+          Your current quiz progress will be lost if you return to the start screen.
+        </p>
+        <div class="mt-6 flex justify-end gap-3">
+          <button type="button" onclick="closeConfirmModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-sm">
+            Continue Quiz
+          </button>
+          <button type="button" onclick="returnToMenu()" class="px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-sm">
+            Yes, Exit Quiz
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="bg-white border-t border-slate-200 py-5 mt-12">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500">
+      <span class="font-semibold text-slate-700">Mr Leek Science &bull; AQA GCSE Biology (8461 &amp; 8464)</span>
+      <span>Paper 2 &bull; Topic 5: Homeostasis &amp; Response Revision Platform</span>
+    </div>
+  </footer>
+
+  <script>
+    // =========================================================================
+    // 0. LOGO FALLBACK HANDLER
+    // =========================================================================
+    function handleLogoFallback(img) {
+      if (!img.dataset.triedFallback) {
+        img.dataset.triedFallback = 'true';
+        img.src = 'mrleeksciencelogo.png';
+      } else {
+        img.classList.add('hidden');
+        const fallbackBadge = document.getElementById('brandLogoFallback');
+        if (fallbackBadge) fallbackBadge.classList.remove('hidden');
+      }
+    }
+
+    // =========================================================================
+    // 1. COMPREHENSIVE 108-QUESTION AQA TOPIC 5 HOMEOSTASIS & RESPONSE BANK
+    //    Schema: { id, tier: 'foundation'|'higher'|'separate', topic, isPractical, question, options, answer, explanation }
+    //    Filtering rules:
+    //      - 'foundation': tier === 'foundation'
+    //      - 'higher': tier === 'foundation' || tier === 'higher'
+    //      - 'separate': tier === 'foundation' || tier === 'higher' || tier === 'separate'
+    // =========================================================================
+    const QUESTION_BANK = [
+      // -------------------- SUBTOPIC 1: HOMEOSTASIS & NERVOUS SYSTEM (12) --------------------
+      {
+        id: 1,
+        tier: 'foundation',
+        topic: 'Homeostasis & Nervous System',
+        isPractical: false,
+        question: 'What is "homeostasis" in the human body?',
+        options: [
+          'The regulation of the internal conditions of a cell or organism to maintain optimum conditions for function in response to internal and external changes',
+          'The breakdown of glucose inside mitochondria to transfer energy for muscle contraction',
+          'The division of body cells by mitosis to replace worn-out tissues',
+          'The movement of water across a partially permeable membrane from dilute to concentrated solution'
+        ],
+        answer: 0,
+        explanation: 'Homeostasis maintains stable internal conditions (such as blood glucose concentration, body temperature, and water levels) so enzymes and cells function at their optimum.'
+      },
+      {
+        id: 2,
+        tier: 'foundation',
+        topic: 'Homeostasis & Nervous System',
+        isPractical: false,
+        question: 'Which three internal conditions in the human body are specifically controlled by homeostasis in AQA GCSE Biology?',
+        options: [
+          'Blood glucose concentration, body temperature, and water levels',
+          'Heart rate, hair colour, and blood group',
+          'Stomach acid pH, lung volume, and bone density',
+          'Saliva production, fingernail growth, and cholesterol level'
+        ],
+        answer: 0,
+        explanation: 'AQA specifies three core homeostatic control systems in humans: blood glucose concentration, body temperature, and water levels.'
+      },
+      {
+        id: 3,
+        tier: 'foundation',
+        topic: 'Homeostasis & Nervous System',
+        isPractical: false,
+        question: 'What are the three essential components of all automatic control systems in the body (both nervous and chemical)?',
+        options: [
+          'Receptors, coordination centres (such as the brain, spinal cord, and pancreas), and effectors (muscles or glands)',
+          'Alveoli, capillaries, and villi',
+          'Xylem, phloem, and stomata',
+          'Antibodies, antigens, and phagocytes'
+        ],
+        answer: 0,
+        explanation: 'Receptors detect stimuli, coordination centres receive and process information, and effectors (muscles contracting or glands secreting hormones) bring about optimum responses.'
+      },
+      {
+        id: 4,
+        tier: 'foundation',
+        topic: 'Homeostasis & Nervous System',
+        isPractical: false,
+        question: 'What is the correct sequence of structures along a reflex arc when you accidentally touch a very hot pan?',
+        options: [
+          'Stimulus → Receptor → Sensory neurone → Relay neurone (in CNS) → Motor neurone → Effector → Response',
+          'Stimulus → Motor neurone → Relay neurone → Sensory neurone → Receptor → Effector → Response',
+          'Receptor → Effector → Sensory neurone → Motor neurone → Brain → Stimulus',
+          'Stimulus → Relay neurone → Sensory neurone → Effector → Motor neurone → Response'
+        ],
+        answer: 0,
+        explanation: 'Impulses travel from the receptor along a sensory neurone to a relay neurone in the spinal cord (CNS), then along a motor neurone to an effector muscle.'
+      },
+      {
+        id: 5,
+        tier: 'foundation',
+        topic: 'Homeostasis & Nervous System',
+        isPractical: false,
+        question: 'Why are reflex actions described as "automatic and rapid" and why are they vital for survival?',
+        options: [
+          'They bypass the conscious areas of the brain, enabling very fast responses that protect the body from injury or harm',
+          'They travel through the bloodstream as hormones so they last for several hours',
+          'They require conscious decision-making in the cerebral cortex first',
+          'They only occur while a person is fast asleep'
+        ],
+        answer: 0,
+        explanation: 'Reflex arcs route impulses directly through the spinal cord or unconscious brain regions without conscious thought, making them rapid and protective.'
+      },
+      {
+        id: 6,
+        tier: 'foundation',
+        topic: 'Homeostasis & Nervous System',
+        isPractical: false,
+        question: 'How is an impulse transmitted across a synapse (the microscopic gap between two neurones)?',
+        options: [
+          'Arrival of an electrical impulse triggers the release of chemical neurotransmitter molecules, which diffuse across the gap and bind to receptors on the next neurone, starting a new electrical impulse',
+          'An electrical spark jumps directly across the empty air gap between the neurones',
+          'Red blood cells carry the electrical impulse across the gap',
+          'The two neurones physically fuse together permanently when stimulated'
+        ],
+        answer: 0,
+        explanation: 'Signal transmission along a neurone is electrical, but across a synapse it is chemical: neurotransmitters diffuse across the synaptic cleft to trigger an electrical impulse in the next neurone.'
+      },
+      {
+        id: 7,
+        tier: 'foundation',
+        topic: 'Homeostasis & Nervous System',
+        isPractical: false,
+        question: 'What are the two types of effectors in the human body, and how does each respond to nerve impulses?',
+        options: [
+          'Muscles (which contract) and glands (which secrete hormones)',
+          'Receptors (which detect light) and synapses (which release enzymes)',
+          'Arteries (which pump blood) and alveoli (which exchange gases)',
+          'Kidneys (which filter urea) and bones (which store calcium)'
+        ],
+        answer: 0,
+        explanation: 'Effectors are either muscles (which respond by contracting) or glands (which respond by secreting hormones or enzymes).'
+      },
+      {
+        id: 8,
+        tier: 'foundation',
+        topic: 'Homeostasis & Nervous System',
+        isPractical: false,
+        question: 'Which two organs make up the human Central Nervous System (CNS)?',
+        options: [
+          'The brain and the spinal cord',
+          'The heart and the lungs',
+          'The sensory neurones and the motor neurones',
+          'The pancreas and the pituitary gland'
+        ],
+        answer: 0,
+        explanation: 'The CNS consists of the brain and the spinal cord, which coordinate responses from receptors to effectors.'
+      },
+      {
+        id: 9,
+        tier: 'higher',
+        topic: 'Homeostasis & Nervous System',
+        isPractical: false,
+        question: 'Why are synapses essential in the nervous system even though chemical diffusion across them slightly slows down total transmission speed?',
+        options: [
+          'Synapses ensure impulses travel in one direction only (unidirectional) and allow a single neurone to connect with many pathways, integrating information',
+          'Synapses convert chemical hormones back into red blood cells',
+          'Synapses speed up diffusion by pumping neurotransmitters using active transport',
+          'Synapses prevent any impulses from ever reaching the brain'
+        ],
+        answer: 0,
+        explanation: 'Because neurotransmitter vesicles are only on the presynaptic side and receptors on the postsynaptic side, synapses enforce one-way transmission and permit branching neural networks.'
+      },
+      {
+        id: 10,
+        tier: 'higher',
+        topic: 'Homeostasis & Nervous System',
+        isPractical: false,
+        question: 'Certain painkilling drugs (such as morphine) and neurotoxins (such as curare) act at synapses. How does a drug that blocks postsynaptic neurotransmitter receptors affect a reflex arc?',
+        options: [
+          'Neurotransmitters cannot bind to the postsynaptic membrane, so no new electrical impulse is generated in the next neurone and the effector does not respond',
+          'Electrical impulses travel twice as fast across the synapse',
+          'The sensory receptor produces ten times more electrical impulses',
+          'The synapse turns into a myelinated axon'
+        ],
+        answer: 0,
+        explanation: 'Blocking postsynaptic receptors prevents neurotransmitters from triggering depolarisation/impulses in the postsynaptic neurone, interrupting the pathway.'
+      },
+      {
+        id: 11,
+        tier: 'foundation',
+        topic: 'Homeostasis & Nervous System',
+        isPractical: false,
+        question: 'How does nervous coordination differ from hormonal (endocrine) coordination in the human body?',
+        options: [
+          'Nervous responses use electrical impulses along neurones, act very quickly, and last for a short time; hormonal responses use chemical messengers in the blood, act more slowly, and last longer',
+          'Nervous responses travel in blood plasma, whereas hormonal responses travel along axons',
+          'Hormonal responses are always faster and shorter-lived than reflex actions',
+          'Nervous responses only affect glands, whereas hormones only affect skeletal muscles'
+        ],
+        answer: 0,
+        explanation: 'Nervous signals are rapid, electrical/synaptic, and localised/short-acting; endocrine hormones travel in the bloodstream more slowly with longer-lasting, widespread effects.'
+      },
+      {
+        id: 12,
+        tier: 'higher',
+        topic: 'Homeostasis & Nervous System',
+        isPractical: false,
+        question: 'A nerve impulse travels 1.2 m along a sensory neurone at 60 m/s, crosses two synapses (taking 0.001 s each), and travels 0.9 m along a motor neurone at 45 m/s. Calculate the total reflex time.',
+        options: ['0.042 s', '0.040 s', '0.022 s', '0.420 s'],
+        answer: 0,
+        explanation: 'Sensory time = 1.2 ÷ 60 = 0.020 s. Motor time = 0.9 ÷ 45 = 0.020 s. Synapses = 2 × 0.001 = 0.002 s. Total = 0.020 + 0.020 + 0.002 = 0.042 s.'
+      },
+
+      // -------------------- SUBTOPIC 2: REQUIRED PRACTICAL — HUMAN REACTION TIME (16) --------------------
+      {
+        id: 13,
+        tier: 'foundation',
+        topic: 'RP: Human Reaction Time',
+        isPractical: true,
+        question: 'In Required Practical 7 (Combined) / RP6 (Separate), how is a vertical metre ruler used to investigate human reaction time?',
+        options: [
+          'Partner A holds the ruler vertically with the 0 cm mark just above Partner B’s open thumb and forefinger; Partner A drops it without warning and Partner B catches it as fast as possible, recording the distance fallen in cm',
+          'Partner B drops the ruler onto the floor and times how many times it bounces',
+          'Partner A measures the length of Partner B’s arm from shoulder to fingertip',
+          'Partner B holds the ruler horizontally and balances weights on the end'
+        ],
+        answer: 0,
+        explanation: 'The ruler drop test measures the distance (cm) the ruler falls before visual receptors detect movement and motor neurones trigger finger muscles to catch it.'
+      },
+      {
+        id: 14,
+        tier: 'foundation',
+        topic: 'RP: Human Reaction Time',
+        isPractical: true,
+        question: 'In the ruler drop test, why does a LARGER drop distance (e.g. 24 cm vs 12 cm) indicate a SLOWER reaction time?',
+        options: [
+          'Because gravity accelerates the ruler downwards continuously, so the longer it takes the person to react and catch it, the further the ruler falls',
+          'Because longer rulers are heavier and fall more slowly',
+          'Because a larger distance means nerve impulses travelled faster',
+          'Because the ruler shrinks when held tightly'
+        ],
+        answer: 0,
+        explanation: 'A greater distance fallen means more time elapsed between the visual stimulus (ruler drop) and the muscular response (catching it).'
+      },
+      {
+        id: 15,
+        tier: 'foundation',
+        topic: 'RP: Human Reaction Time',
+        isPractical: true,
+        question: 'When investigating the effect of caffeine (e.g. caffeinated vs decaffeinated cola) on human reaction time, what are the independent, dependent, and key control variables?',
+        options: [
+          'Independent: presence/concentration of caffeine; Dependent: reaction time (converted from ruler drop distance); Control: same hand used, same starting gap between fingers, same volume of drink, same waiting time (e.g. 20 mins), quiet room',
+          'Independent: distance ruler falls; Dependent: volume of cola drunk; Control: age of ruler',
+          'Independent: left vs right hand; Dependent: caffeine content; Control: height of chair',
+          'Independent: reaction time; Dependent: stopwatch brand; Control: shoe size'
+        ],
+        answer: 0,
+        explanation: 'Caffeine intake is varied (independent), reaction time is measured (dependent), and variables such as dominant/non-dominant hand, finger gap, rest period, and distractions must be controlled.'
+      },
+      {
+        id: 16,
+        tier: 'foundation',
+        topic: 'RP: Human Reaction Time',
+        isPractical: true,
+        question: 'Why must Partner A drop the ruler WITHOUT giving any verbal countdown ("3, 2, 1, drop") or visual cue?',
+        options: [
+          'So Partner B reacts purely to the visual stimulus of the ruler falling rather than anticipating/predicting the drop, which would give an artificially short reading',
+          'Because talking slows down gravity',
+          'Because sound waves push the ruler sideways',
+          'So Partner B uses their ears instead of their nose'
+        ],
+        answer: 0,
+        explanation: 'Predictable cues allow the participant to anticipate the release, invalidating the measurement of genuine stimulus-response reaction time.'
+      },
+      {
+        id: 17,
+        tier: 'foundation',
+        topic: 'RP: Human Reaction Time',
+        isPractical: true,
+        question: 'Why should the participant’s forearm rest flat on the edge of the desk with their thumb and index finger positioned at a fixed gap (e.g. 2 cm apart) level with the 0 cm mark?',
+        options: [
+          'It standardises the starting position and ensures consistent measurement of the exact distance fallen from 0 cm (reducing random error)',
+          'It prevents blood from flowing into the hand',
+          'It stops the ruler from breaking if dropped',
+          'It forces the person to use their non-dominant hand'
+        ],
+        answer: 0,
+        explanation: 'Resting the arm and aligning fingers at 0 cm with a consistent gap ensures every trial starts identically.'
+      },
+      {
+        id: 18,
+        tier: 'foundation',
+        topic: 'RP: Human Reaction Time',
+        isPractical: true,
+        question: 'In a reaction time experiment, a student records drop distances of 16 cm, 15 cm, 34 cm, and 17 cm. How should the student calculate the mean drop distance?',
+        options: [
+          'Exclude 34 cm as an anomalous result (e.g. distracted), and calculate the mean of the concordant trials: (16 + 15 + 17) ÷ 3 = 16 cm',
+          'Include all four values: (16 + 15 + 34 + 17) ÷ 4 = 20.5 cm',
+          'Take only the smallest reading (15 cm) and ignore the rest',
+          'Add all four numbers together to get 82 cm'
+        ],
+        answer: 0,
+        explanation: '34 cm is clearly an outlier caused by distraction or loss of concentration; excluding anomalies before calculating the mean improves accuracy.'
+      },
+      {
+        id: 19,
+        tier: 'foundation',
+        topic: 'RP: Human Reaction Time',
+        isPractical: true,
+        question: 'Why is a computer-based reaction time test (pressing a spacebar when a screen changes colour) often considered superior to the ruler drop test?',
+        options: [
+          'It measures time directly in milliseconds with higher resolution, eliminates human error in reading the ruler scale, and randomises the delay before the stimulus appears',
+          'It uses stronger gravity than a wooden ruler',
+          'It removes the need for eyes or motor neurones',
+          'It automatically gives everyone the exact same reaction time'
+        ],
+        answer: 0,
+        explanation: 'Computer tests provide millisecond precision, avoid parallax/reading errors on a ruler, and prevent anticipation via random time delays.'
+      },
+      {
+        id: 20,
+        tier: 'foundation',
+        topic: 'RP: Human Reaction Time',
+        isPractical: true,
+        question: 'During a practice investigation, a student repeats the ruler drop test 15 times in a row without caffeine and notices their mean drop distance decreases from 22 cm to 14 cm. What conclusion does this support?',
+        options: [
+          'Practice/repetition improves (shortens) reaction time because neural pathways become more coordinated',
+          'The ruler became lighter after 15 drops',
+          'Fatigue always makes reaction times faster',
+          'Gravity weakens after repeated drops'
+        ],
+        answer: 0,
+        explanation: 'Practice is itself a factor that decreases reaction time, which is why participants should have a few warm-up practice drops before comparing conditions like caffeine.'
+      },
+      {
+        id: 21,
+        tier: 'higher',
+        topic: 'RP: Human Reaction Time',
+        isPractical: true,
+        question: 'Using a standard conversion table or the physics equation t = √(2d / g) where g = 9.8 m/s², calculate the reaction time when a ruler falls a distance d = 0.196 m (19.6 cm).',
+        options: ['0.20 s', '0.04 s', '0.40 s', '2.00 s'],
+        answer: 0,
+        explanation: 't = √((2 × 0.196) ÷ 9.8) = √(0.392 ÷ 9.8) = √0.04 = 0.20 s.'
+      },
+      {
+        id: 22,
+        tier: 'higher',
+        topic: 'RP: Human Reaction Time',
+        isPractical: true,
+        question: 'In a double-blind investigation into the effect of caffeine on reaction time, Group A drinks 250 cm³ of caffeinated cola and Group B drinks 250 cm³ of decaffeinated cola (placebo). Why is a blind/placebo control used?',
+        options: [
+          'To control for the placebo effect (expectation bias) and the effect of fluid volume/sugar intake, ensuring any difference in reaction time is caused specifically by caffeine',
+          'Because decaffeinated cola contains twice as much caffeine as regular cola',
+          'To prevent participants from seeing the ruler fall',
+          'So that both groups have identical heart rates'
+        ],
+        answer: 0,
+        explanation: 'Using an identical-tasting decaffeinated drink removes psychological expectation bias and controls for sugar/liquid intake.'
+      },
+      {
+        id: 23,
+        tier: 'higher',
+        topic: 'RP: Human Reaction Time',
+        isPractical: true,
+        question: 'How does caffeine (a stimulant drug) decrease human reaction time at the cellular level?',
+        options: [
+          'Caffeine acts at synapses in the nervous system to increase neurotransmitter activity and speed up synaptic transmission',
+          'Caffeine turns sensory neurones into solid copper wires',
+          'Caffeine increases the pull of gravity on the falling ruler',
+          'Caffeine stops muscles from needing oxygen for respiration'
+        ],
+        answer: 0,
+        explanation: 'Caffeine blocks inhibitory adenosine receptors in the CNS, enhancing neurotransmitter release and accelerating impulse transmission across synapses.'
+      },
+      {
+        id: 24,
+        tier: 'foundation',
+        topic: 'RP: Human Reaction Time',
+        isPractical: true,
+        question: 'Where on the ruler should Partner B consistently read the measurement once they catch it?',
+        options: [
+          'Always at the exact same reference point on their hand (such as the top edge of their thumb) every single trial',
+          'Anywhere between the top of their thumb and the bottom of their little finger',
+          'At the 100 cm mark at the top of the ruler',
+          'At the point where the ruler hits the floor'
+        ],
+        answer: 0,
+        explanation: 'Reading consistently from the top of the thumb (or top of the index finger) avoids a systematic measurement offset between trials.'
+      },
+      {
+        id: 25,
+        tier: 'foundation',
+        topic: 'RP: Human Reaction Time',
+        isPractical: true,
+        question: 'Why is the ruler drop catch considered a coordinated conscious response rather than a simple spinal reflex arc?',
+        options: [
+          'Because visual information from the retina must be processed by the conscious brain (cerebral cortex) before sending motor impulses down the spinal cord to the finger muscles',
+          'Because it uses hormones instead of neurones',
+          'Because it bypasses the eyes completely',
+          'Because it only uses sensory neurones and no motor neurones'
+        ],
+        answer: 0,
+        explanation: 'Unlike an automatic spinal reflex (like pulling away from heat), catching a falling ruler involves conscious visual processing in the brain.'
+      },
+      {
+        id: 26,
+        tier: 'higher',
+        topic: 'RP: Human Reaction Time',
+        isPractical: true,
+        question: 'Why does testing a large sample size of 30 students rather than just 1 student make conclusions about caffeine and reaction time much more valid and reproducible?',
+        options: [
+          'Individual humans vary naturally in baseline reaction time, caffeine tolerance, and sleep levels; a large sample reduces the impact of individual anomalies and reveals a reliable population trend',
+          'Because 30 students can hold 30 rulers at the exact same time with one hand',
+          'Because a larger sample eliminates the need for a control group',
+          'Because gravity acts differently on different students'
+        ],
+        answer: 0,
+        explanation: 'Biological variation between individuals is large; testing many participants enables valid statistical comparisons of mean changes.'
+      },
+      {
+        id: 27,
+        tier: 'higher',
+        topic: 'RP: Human Reaction Time',
+        isPractical: true,
+        question: 'In a class experiment, mean reaction time before drinking caffeinated coffee was 0.25 s, and 30 minutes after drinking coffee it was 0.21 s. Calculate the percentage decrease in reaction time.',
+        options: ['16%', '4%', '19%', '84%'],
+        answer: 0,
+        explanation: 'Decrease = 0.25 − 0.21 = 0.04 s. Percentage decrease = (0.04 ÷ 0.25) × 100 = 16%.'
+      },
+      {
+        id: 28,
+        tier: 'foundation',
+        topic: 'RP: Human Reaction Time',
+        isPractical: true,
+        question: 'Which factor would INCREASE (slow down) a person’s reaction time during the ruler drop test?',
+        options: [
+          'Loud background distractions, tiredness/lack of sleep, or depressant drugs such as alcohol',
+          'Practising the ruler drop test beforehand',
+          'Using their dominant writing hand',
+          'Drinking a caffeinated energy drink'
+        ],
+        answer: 0,
+        explanation: 'Distractions divide attention, while fatigue and depressants (alcohol) slow synaptic transmission, increasing reaction time.'
+      },
+
+      // -------------------- SUBTOPIC 3: THE BRAIN & THE EYE — SEPARATE BIOLOGY ONLY (18) --------------------
+      {
+        id: 29,
+        tier: 'separate',
+        topic: 'The Brain & The Eye (Separate)',
+        isPractical: false,
+        question: 'Which three major regions of the human brain are studied in Separate Biology (8461), and what are their primary functions?',
+        options: [
+          'Cerebral cortex (consciousness, intelligence, memory, language); Cerebellum (coordinating muscular activity and balance); Medulla (unconscious activities such as heartbeat and breathing)',
+          'Cerebral cortex (heartbeat and breathing); Cerebellum (language and memory); Medulla (balance and posture)',
+          'Pituitary gland (vision); Pancreas (hearing); Hypothalamus (digestion)',
+          'Retina (memory); Cornea (balance); Sclera (breathing)'
+        ],
+        answer: 0,
+        explanation: 'The cerebral cortex controls higher conscious thought/memory/language, the cerebellum coordinates movement and balance, and the medulla regulates autonomic breathing and heart rate.'
+      },
+      {
+        id: 30,
+        tier: 'separate',
+        topic: 'The Brain & The Eye (Separate)',
+        isPractical: false,
+        question: 'Why is investigating brain function and treating brain damage or brain disease particularly difficult for neuroscientists?',
+        options: [
+          'The brain is extremely complex and delicate, enclosed inside the cranium (skull), and damaging delicate neural tissue during surgery can cause permanent loss of function',
+          'The brain has no blood supply so drugs cannot reach it',
+          'Brain cells divide by mitosis every 5 minutes, rapidly changing the brain’s shape',
+          'The brain is made entirely of cartilage'
+        ],
+        answer: 0,
+        explanation: 'The brain’s intricate neural interconnections, fragile tissue, and enclosure within the skull make surgical intervention and functional mapping highly challenging.'
+      },
+      {
+        id: 31,
+        tier: 'separate',
+        topic: 'The Brain & The Eye (Separate)',
+        isPractical: false,
+        question: 'Which three methods have neuroscientists used to map which regions of the brain carry out specific functions?',
+        options: [
+          'Studying patients with brain damage/lesions, electrically stimulating different parts of the brain in conscious patients, and MRI (Magnetic Resonance Imaging) scanning',
+          'Testing urine with Benedict’s solution, X-raying the femur, and counting heartbeats',
+          'Dissecting plant stems, using quadrats, and measuring reaction times with a ruler',
+          'Injecting insulin, measuring blood pressure, and using ultrasound on the stomach'
+        ],
+        answer: 0,
+        explanation: 'Neuroscientists map brain regions by correlating behavioural deficits with localised brain lesions, observing responses to weak electrical stimulation, and using functional MRI scans.'
+      },
+      {
+        id: 32,
+        tier: 'separate',
+        topic: 'The Brain & The Eye (Separate)',
+        isPractical: false,
+        question: 'A patient suffers a stroke affecting the cerebellum at the back of the brain. Which symptoms are they most likely to experience?',
+        options: [
+          'Loss of balance, unsteady walking, and difficulty coordinating smooth muscle movements',
+          'Complete stopping of heartbeat and breathing',
+          'Inability to produce insulin in the pancreas',
+          'Loss of pupillary reflex only'
+        ],
+        answer: 0,
+        explanation: 'The cerebellum coordinates muscular contractions and posture/balance; damage leads to ataxia (uncoordinated movement and poor balance).'
+      },
+      {
+        id: 33,
+        tier: 'separate',
+        topic: 'The Brain & The Eye (Separate)',
+        isPractical: false,
+        question: 'Match the structures of the human eye to their correct functions: Retina, Optic Nerve, Sclera, and Cornea.',
+        options: [
+          'Retina: contains light-sensitive receptor cells; Optic nerve: carries impulses to the brain; Sclera: tough white protective outer coat; Cornea: transparent front window that refracts (bends) light into the eye',
+          'Retina: refracts light; Optic nerve: protects the eye; Sclera: detects colour; Cornea: carries impulses to the brain',
+          'Retina: controls pupil size; Optic nerve: holds the lens; Sclera: produces tears; Cornea: absorbs stray light',
+          'Retina: focuses near objects; Optic nerve: secretes hormones; Sclera: bends light; Cornea: detects dim light'
+        ],
+        answer: 0,
+        explanation: 'The sclera protects the eyeball, the cornea refracts incoming light, the retina contains rod/cone photoreceptors, and the optic nerve transmits impulses to the visual cortex.'
+      },
+      {
+        id: 34,
+        tier: 'separate',
+        topic: 'The Brain & The Eye (Separate)',
+        isPractical: false,
+        question: 'How does the iris reflex respond when you walk from a dark room into bright sunlight?',
+        options: [
+          'Circular muscles in the iris contract and radial muscles relax, making the pupil smaller (constrict) so less light enters and the retina is protected from damage',
+          'Radial muscles contract and circular muscles relax, making the pupil larger (dilate)',
+          'The ciliary muscles relax and the lens becomes thinner',
+          'The sclera turns opaque to block all sunlight'
+        ],
+        answer: 0,
+        explanation: 'In bright light, circular iris muscles contract and radial muscles relax, constricting the pupil to prevent retinal damage.'
+      },
+      {
+        id: 35,
+        tier: 'separate',
+        topic: 'The Brain & The Eye (Separate)',
+        isPractical: false,
+        question: 'What is "accommodation" in the human eye?',
+        options: [
+          'The process of changing the shape (thickness) of the lens to focus light accurately onto the retina from near or distant objects',
+          'The adjustment of pupil diameter in dim and bright light',
+          'The movement of the eyeballs from left to right when reading',
+          'The production of tears to wash dust off the cornea'
+        ],
+        answer: 0,
+        explanation: 'Accommodation alters the curvature and refractive power of the flexible lens so diverging rays from near objects or parallel rays from distant objects focus sharply on the retina.'
+      },
+      {
+        id: 36,
+        tier: 'separate',
+        topic: 'The Brain & The Eye (Separate)',
+        isPractical: false,
+        question: 'To focus on a NEAR object (such as reading a book), what happens to the ciliary muscles, suspensory ligaments, and lens?',
+        options: [
+          'Ciliary muscles contract, suspensory ligaments loosen (slacken), and the lens becomes thicker and more curved, refracting light rays more strongly',
+          'Ciliary muscles relax, suspensory ligaments are pulled tight, and the lens is pulled thin, refracting light less strongly',
+          'Ciliary muscles contract, suspensory ligaments pull tight, and the lens becomes flat',
+          'Ciliary muscles relax, suspensory ligaments slacken, and the pupil constricts'
+        ],
+        answer: 0,
+        explanation: 'For near vision: ciliary muscles contract → suspensory ligaments slacken → elastic lens becomes thicker/more convex → light refracts strongly onto the retina.'
+      },
+      {
+        id: 37,
+        tier: 'separate',
+        topic: 'The Brain & The Eye (Separate)',
+        isPractical: false,
+        question: 'To focus on a DISTANT object (such as looking at a mountain across a valley), what happens to the ciliary muscles, suspensory ligaments, and lens?',
+        options: [
+          'Ciliary muscles relax, suspensory ligaments are pulled tight, and the lens is pulled thin and less curved, refracting light rays only slightly',
+          'Ciliary muscles contract, suspensory ligaments loosen, and the lens becomes thicker',
+          'Ciliary muscles relax, suspensory ligaments loosen, and the cornea flattens',
+          'Ciliary muscles contract and pull the lens thinner'
+        ],
+        answer: 0,
+        explanation: 'For distant vision: ciliary muscles relax → suspensory ligaments tighten → lens is stretched thin → weaker refraction focuses parallel light rays onto the retina.'
+      },
+      {
+        id: 38,
+        tier: 'separate',
+        topic: 'The Brain & The Eye (Separate)',
+        isPractical: false,
+        question: 'What causes "myopia" (short-sightedness), where distant objects appear blurred?',
+        options: [
+          'The eyeball is too long or the lens/cornea is too thick/curved, so light rays from distant objects are focused IN FRONT OF the retina',
+          'The eyeball is too short or the lens is too thin, so light rays focus BEHIND the retina',
+          'The optic nerve has detached from the sclera',
+          'The circular muscles of the iris cannot contract'
+        ],
+        answer: 0,
+        explanation: 'In myopia, over-refraction or an elongated eyeball brings parallel rays from distant objects to a focal point before they reach the retina.'
+      },
+      {
+        id: 39,
+        tier: 'separate',
+        topic: 'The Brain & The Eye (Separate)',
+        isPractical: false,
+        question: 'Which type of spectacle or contact lens is used to correct MYOPIA (short-sightedness), and how does it work?',
+        options: [
+          'A concave lens (curved inwards), which diverges incoming light rays slightly before they enter the eye so the eye’s lens focuses them onto the retina',
+          'A convex lens (curved outwards), which converges light rays earlier',
+          'A flat plane mirror that reflects excess light away',
+          'A tinted lens that blocks all blue light'
+        ],
+        answer: 0,
+        explanation: 'A diverging (concave) lens spreads light rays slightly apart before the cornea/lens refracts them, shifting the focal point back onto the retina.'
+      },
+      {
+        id: 40,
+        tier: 'separate',
+        topic: 'The Brain & The Eye (Separate)',
+        isPractical: false,
+        question: 'What causes "hyperopia" (long-sightedness), where near objects appear blurred, and which lens corrects it?',
+        options: [
+          'The eyeball is too short or the lens cannot become thick enough, so light from near objects focuses BEHIND the retina; corrected with a CONVEX lens that converges light rays before entering the eye',
+          'The eyeball is too long so light focuses IN FRONT OF the retina; corrected with a CONCAVE lens',
+          'The retina has no rod cells; corrected with antibiotics',
+          'The pupil is permanently dilated; corrected with eye drops'
+        ],
+        answer: 0,
+        explanation: 'In hyperopia, insufficient refraction focuses near rays behind the retina; a converging (convex) lens adds extra refraction to focus the image onto the retina.'
+      },
+      {
+        id: 41,
+        tier: 'separate',
+        topic: 'The Brain & The Eye (Separate)',
+        isPractical: false,
+        question: 'Besides glasses and contact lenses, what are two modern surgical technologies used to treat myopia and hyperopia?',
+        options: [
+          'Laser eye surgery (to permanently reshape the curvature of the cornea) and replacement lens surgery (implanting an artificial lens inside the eye)',
+          'Dialysis machines and kidney transplants',
+          'Monoclonal antibody injections and radiotherapy',
+          'Heart pacemakers and coronary stents'
+        ],
+        answer: 0,
+        explanation: 'Laser surgery vaporises thin layers of the cornea to alter its refraction, while intraocular lens implants replace or supplement the natural lens.'
+      },
+      {
+        id: 42,
+        tier: 'separate',
+        topic: 'The Brain & The Eye (Separate)',
+        isPractical: false,
+        question: 'Why do many people over the age of 45–50 develop age-related long-sightedness (presbyopia) and need reading glasses?',
+        options: [
+          'With age, the natural lens becomes stiffer and less elastic, so even when ciliary muscles contract and suspensory ligaments slacken, the lens cannot thicken enough to focus near objects',
+          'The eyeball shrinks to half its size after age 45',
+          'The optic nerve stops carrying impulses from near objects',
+          'The cornea turns completely opaque with age'
+        ],
+        answer: 0,
+        explanation: 'Loss of lens elasticity prevents the lens from springing into a thick, highly curved shape during accommodation for close work.'
+      },
+      {
+        id: 43,
+        tier: 'separate',
+        topic: 'The Brain & The Eye (Separate)',
+        isPractical: false,
+        question: 'In dim light at night, how do the muscles of the iris alter the pupil?',
+        options: [
+          'Radial muscles contract and circular muscles relax, making the pupil wider (dilate) to let as much light as possible reach the retina',
+          'Circular muscles contract and radial muscles relax, making the pupil smaller',
+          'Both circular and radial muscles contract at the same time to close the pupil',
+          'The ciliary muscles pull the pupil wider'
+        ],
+        answer: 0,
+        explanation: 'Radial and circular muscles are antagonistic: radial contraction dilates the pupil in dim light to maximise photon capture.'
+      },
+      {
+        id: 44,
+        tier: 'separate',
+        topic: 'The Brain & The Eye (Separate)',
+        isPractical: false,
+        question: 'Which structure in the eye refracts light the MOST as light enters from the air, and which structure fine-tunes the focus?',
+        options: [
+          'The cornea performs most of the fixed refraction; the flexible lens fine-tunes the focusing for different distances',
+          'The iris performs most refraction; the retina fine-tunes focus',
+          'The sclera refracts light most; the optic nerve fine-tunes focus',
+          'The pupil refracts light; the blind spot fine-tunes focus'
+        ],
+        answer: 0,
+        explanation: 'Because of the large refractive index jump between air and the curved cornea, the cornea does the bulk of refraction, while the adjustable lens provides variable focusing.'
+      },
+      {
+        id: 45,
+        tier: 'separate',
+        topic: 'The Brain & The Eye (Separate)',
+        isPractical: false,
+        question: 'Why is there a "blind spot" on the retina where no image can be detected?',
+        options: [
+          'It is the point where the optic nerve leaves the back of the eye, so there are no light-sensitive receptor cells (rods or cones) present there',
+          'It is covered by a thick layer of black melanin',
+          'It is blocked by the ciliary muscles',
+          'Light cannot pass through the centre of the lens'
+        ],
+        answer: 0,
+        explanation: 'Where nerve fibres bundle together to exit as the optic nerve, photoreceptors are absent, creating a physiological blind spot.'
+      },
+      {
+        id: 46,
+        tier: 'separate',
+        topic: 'The Brain & The Eye (Separate)',
+        isPractical: false,
+        question: 'Compare the risks and benefits of laser eye surgery versus wearing contact lenses for correcting myopia.',
+        options: [
+          'Laser surgery offers permanent correction without daily lenses, but carries surgical risks (infection, dry eyes, over/under-correction, permanent glare); contact lenses are non-surgical and reversible, but carry risks of corneal infection if hygiene is poor',
+          'Laser surgery has zero risks and is completely reversible; contact lenses require general anaesthetic every morning',
+          'Neither method alters how light focuses on the retina',
+          'Laser surgery works by replacing the optic nerve'
+        ],
+        answer: 0,
+        explanation: 'Evaluating medical technologies requires weighing permanence and convenience against surgical complications vs ongoing hygiene/infection risks.'
+      },
+
+      // -------------------- SUBTOPIC 4: CONTROL OF BODY TEMPERATURE — SEPARATE BIOLOGY ONLY (10) --------------------
+      {
+        id: 47,
+        tier: 'separate',
+        topic: 'Control of Body Temperature (Separate)',
+        isPractical: false,
+        question: 'Where in the human brain is the thermoregulatory centre located, and what two sources of temperature information does it receive (Separate Biology 8461)?',
+        options: [
+          'In the hypothalamus; it contains receptors sensitive to the temperature of the blood flowing through the brain AND receives nerve impulses from temperature receptors in the skin',
+          'In the cerebellum; it only receives impulses from receptors in the stomach',
+          'In the medulla; it monitors the temperature of urine in the bladder',
+          'In the cerebral cortex; it receives impulses from the optic nerve'
+        ],
+        answer: 0,
+        explanation: 'The thermoregulatory centre in the brain monitors core blood temperature directly and integrates external skin temperature signals via sensory neurones.'
+      },
+      {
+        id: 48,
+        tier: 'separate',
+        topic: 'Control of Body Temperature (Separate)',
+        isPractical: false,
+        question: 'Why is it essential that human body temperature is maintained close to 37 °C?',
+        options: [
+          '37 °C is the optimum temperature for human enzymes; if too cold, reactions slow down, and if too hot, enzymes denature and lose their active site shape',
+          'Blood freezes solid at 35 °C and boils at 39 °C',
+          'White blood cells can only divide at exactly 37.0 °C',
+          'Haemoglobin turns into starch above 38 °C'
+        ],
+        answer: 0,
+        explanation: 'Enzyme-catalysed metabolic reactions require an optimum temperature around 37 °C; high temperatures break intramolecular bonds and denature enzymes.'
+      },
+      {
+        id: 49,
+        tier: 'separate',
+        topic: 'Control of Body Temperature (Separate)',
+        isPractical: false,
+        question: 'If body temperature rises TOO HIGH (e.g. during exercise on a hot day), what happens to the arterioles supplying skin capillaries (vasodilation)?',
+        options: [
+          'Blood vessels (arterioles) supplying the skin capillaries dilate (widen), allowing more warm blood to flow close to the skin surface so more thermal energy is transferred (radiated) to the surroundings',
+          'The capillaries move physically closer to the surface of the skin',
+          'Blood vessels constrict so less blood reaches the skin',
+          'Sweat glands stop producing sweat completely'
+        ],
+        answer: 0,
+        explanation: 'Note the crucial AQA mark-scheme point: blood vessels do NOT move up or down—arterioles dilate (widen), increasing blood flow near the surface for greater heat loss.'
+      },
+      {
+        id: 50,
+        tier: 'separate',
+        topic: 'Control of Body Temperature (Separate)',
+        isPractical: false,
+        question: 'How does sweating cool the body down when core temperature rises above 37 °C?',
+        options: [
+          'Sweat glands secrete sweat onto the skin surface; as the water in sweat evaporates, it transfers thermal energy away from the skin into the environment',
+          'Cold sweat lowers body temperature simply because the liquid is icy cold inside the gland',
+          'Sweat blocks pores so heat cannot escape',
+          'Sweat reacts chemically with oxygen to absorb light energy'
+        ],
+        answer: 0,
+        explanation: 'Evaporation of water requires latent heat of vaporisation, drawing thermal energy away from the skin surface and cooling the blood underneath.'
+      },
+      {
+        id: 51,
+        tier: 'separate',
+        topic: 'Control of Body Temperature (Separate)',
+        isPractical: false,
+        question: 'If body temperature falls TOO LOW (e.g. standing outside in freezing weather), what three responses are triggered by the thermoregulatory centre?',
+        options: [
+          'Vasoconstriction of arterioles supplying skin capillaries (reducing blood flow and heat loss), cessation of sweating, and shivering (rapid involuntary skeletal muscle contractions)',
+          'Vasodilation of skin arterioles, profuse sweating, and relaxation of skeletal muscles',
+          'Increased insulin secretion, pupil dilation, and slower breathing',
+          'Conversion of glycogen to starch in the skin'
+        ],
+        answer: 0,
+        explanation: 'In the cold: vasoconstriction minimises heat radiation from skin blood, sweat stops, and shivering increases exothermic respiration in muscles to generate heat.'
+      },
+      {
+        id: 52,
+        tier: 'separate',
+        topic: 'Control of Body Temperature (Separate)',
+        isPractical: false,
+        question: 'How does "shivering" help raise body temperature back toward 37 °C?',
+        options: [
+          'Skeletal muscles contract rapidly and involuntarily, requiring increased rates of exothermic cellular respiration which transfers thermal energy (heat) to warm the body',
+          'Shivering creates friction between the skin and the air',
+          'Shivering pumps sweat back into the sweat glands',
+          'Shivering causes hair follicles to produce thick fur'
+        ],
+        answer: 0,
+        explanation: 'Muscle contraction requires ATP from respiration; because respiration is exothermic, increased muscle activity generates heat internally.'
+      },
+      {
+        id: 53,
+        tier: 'separate',
+        topic: 'Control of Body Temperature (Separate)',
+        isPractical: false,
+        question: 'Why does a person look pale or slightly bluish in freezing conditions, whereas their skin looks flushed and red after running a marathon?',
+        options: [
+          'In the cold, vasoconstriction reduces warm blood flow near the skin surface (pale); after running, vasodilation increases warm blood flow near the surface (flushed/red)',
+          'In the cold, red blood cells turn white; after running, red blood cells multiply tenfold',
+          'In the cold, capillaries sink deeper into the bones; after running, capillaries rise through the epidermis',
+          'In the cold, haemoglobin loses all oxygen; after running, sweat dyes the skin red'
+        ],
+        answer: 0,
+        explanation: 'Changes in skin colour reflect changes in blood volume flowing through superficial dermal capillary loops due to arteriole vasoconstriction or vasodilation.'
+      },
+      {
+        id: 54,
+        tier: 'separate',
+        topic: 'Control of Body Temperature (Separate)',
+        isPractical: false,
+        question: 'Why is sweating much less effective at cooling the body down in a hot, very humid tropical rainforest than in a hot, dry desert?',
+        options: [
+          'In very humid air, the air is already nearly saturated with water vapour, so sweat cannot evaporate easily from the skin and therefore transfers very little heat energy away',
+          'Sweat glands do not work in humid air',
+          'In a desert, the Sun freezes the sweat on the skin',
+          'Humid air causes vasoconstriction of skin arterioles'
+        ],
+        answer: 0,
+        explanation: 'Sweating only cools when water evaporates; high atmospheric humidity reduces the evaporation rate, causing sweat to drip off without removing latent heat.'
+      },
+      {
+        id: 55,
+        tier: 'separate',
+        topic: 'Control of Body Temperature (Separate)',
+        isPractical: false,
+        question: 'In furry mammals, hair erector muscles contract in cold weather to trap an insulating layer of air. Why is this response of very limited benefit in modern humans?',
+        options: [
+          'Human body hair is too sparse and fine to trap a thick insulating layer of still air (it merely produces "goosebumps")',
+          'Humans do not have hair erector muscles',
+          'Goosebumps increase heat loss by conduction',
+          'Contracting hair muscles stops blood flowing to the brain'
+        ],
+        answer: 0,
+        explanation: 'Piloerection in humans produces goosebumps, which is a vestigial thermoregulatory reflex with minimal insulating value compared to thick fur.'
+      },
+      {
+        id: 56,
+        tier: 'separate',
+        topic: 'Control of Body Temperature (Separate)',
+        isPractical: false,
+        question: 'In an exam question on thermoregulation, why will a student LOSE marks if they write: "In hot weather, blood vessels move closer to the surface of the skin"?',
+        options: [
+          'Blood vessels are fixed in position and cannot move; students must state that arterioles supplying skin capillaries DILATE (widen), allowing more blood to flow near the surface',
+          'Because blood vessels are only found in muscles, never in the skin',
+          'Because blood vessels actually constrict in hot weather',
+          'Because heat is only lost through the lungs, never the skin'
+        ],
+        answer: 0,
+        explanation: 'AQA examiner reports repeatedly highlight this misconception: blood vessels do not move; arterioles dilate or constrict to alter blood flow.'
+      },
+
+      // -------------------- SUBTOPIC 5: CONTROL OF BLOOD GLUCOSE & DIABETES (16) --------------------
+      {
+        id: 57,
+        tier: 'foundation',
+        topic: 'Blood Glucose & Diabetes',
+        isPractical: false,
+        question: 'Which organ monitors and controls blood glucose concentration in the human body?',
+        options: ['The pancreas', 'The gall bladder', 'The kidney', 'The thyroid gland'],
+        answer: 0,
+        explanation: 'The pancreas detects changes in blood glucose concentration and secretes insulin (or glucagon) directly into the bloodstream.'
+      },
+      {
+        id: 58,
+        tier: 'foundation',
+        topic: 'Blood Glucose & Diabetes',
+        isPractical: false,
+        question: 'What happens when blood glucose concentration rises TOO HIGH (for example, shortly after eating a carbohydrate-rich meal)?',
+        options: [
+          'The pancreas secretes the hormone insulin into the blood, causing glucose to move from the blood into liver and muscle cells where excess glucose is converted into insoluble glycogen for storage',
+          'The pancreas secretes glucagon, causing glycogen to break down into glucose',
+          'The liver secretes insulin, turning glucose into urea',
+          'The kidneys excrete all the glucose into urine immediately'
+        ],
+        answer: 0,
+        explanation: 'Insulin stimulates liver and muscle cells to absorb glucose from the blood and polymerise it into insoluble glycogen, lowering blood glucose back to normal.'
+      },
+      {
+        id: 59,
+        tier: 'higher',
+        topic: 'Blood Glucose & Diabetes',
+        isPractical: false,
+        question: 'In Higher Tier, what happens when blood glucose concentration falls TOO LOW (for example, during fasting or prolonged exercise)?',
+        options: [
+          'The pancreas secretes the hormone glucagon into the blood, which causes liver cells to convert stored glycogen back into soluble glucose and release it into the blood',
+          'The pancreas secretes insulin, which converts glucose into glycogen',
+          'The pituitary gland secretes ADH to retain glucose in the kidneys',
+          'Muscle cells convert protein directly into starch'
+        ],
+        answer: 0,
+        explanation: 'Glucagon acts on liver cells to stimulate glycogenolysis (conversion of stored glycogen into glucose), raising blood glucose levels back to the set point.'
+      },
+      {
+        id: 60,
+        tier: 'higher',
+        topic: 'Blood Glucose & Diabetes',
+        isPractical: false,
+        question: 'How do insulin and glucagon interact in a "negative feedback" cycle to keep blood glucose concentration within narrow limits?',
+        options: [
+          'Rising blood glucose triggers insulin release to lower it; falling blood glucose triggers glucagon release to raise it—each hormone reverses the deviation away from the optimum level',
+          'Both insulin and glucagon raise blood glucose higher and higher in a positive loop',
+          'Insulin and glucagon are both secreted at the exact same time after every meal',
+          'Negative feedback means the pancreas stops working permanently once blood glucose is normal'
+        ],
+        answer: 0,
+        explanation: 'In negative feedback, any change away from the normal level triggers a response that counteracts the change and restores equilibrium.'
+      },
+      {
+        id: 61,
+        tier: 'foundation',
+        topic: 'Blood Glucose & Diabetes',
+        isPractical: false,
+        question: 'What is the cause of Type 1 diabetes?',
+        options: [
+          'A disorder in which the pancreas fails to produce sufficient insulin (usually because the immune system has destroyed the insulin-producing cells)',
+          'Body cells no longer respond to insulin due to obesity and lack of exercise',
+          'Eating too much salt in the diet',
+          'An infection of the lungs by Salmonella bacteria'
+        ],
+        answer: 0,
+        explanation: 'Type 1 diabetes is an autoimmune condition typically starting in childhood/youth where the pancreas produces little or no insulin, causing uncontrolled high blood glucose.'
+      },
+      {
+        id: 62,
+        tier: 'foundation',
+        topic: 'Blood Glucose & Diabetes',
+        isPractical: false,
+        question: 'How is Type 1 diabetes normally treated?',
+        options: [
+          'With regular insulin injections (at mealtimes to match carbohydrate intake), alongside monitoring blood glucose levels and managing diet/exercise',
+          'With a 7-day course of penicillin antibiotics',
+          'By taking insulin tablets by mouth with water',
+          'By eating extra sugar every hour'
+        ],
+        answer: 0,
+        explanation: 'Type 1 diabetes requires exogenous insulin injected into subcutaneous fat (often before meals) so cells take up glucose and convert it to glycogen.'
+      },
+      {
+        id: 63,
+        tier: 'foundation',
+        topic: 'Blood Glucose & Diabetes',
+        isPractical: false,
+        question: 'Why MUST insulin be injected rather than swallowed as a tablet or pill?',
+        options: [
+          'Because insulin is a protein hormone; if swallowed, protease enzymes in the stomach and small intestine would digest it into amino acids before it could enter the blood',
+          'Because insulin is too large to fit down the oesophagus',
+          'Because insulin would dissolve the teeth',
+          'Because stomach acid turns insulin into glucagon'
+        ],
+        answer: 0,
+        explanation: 'As a polypeptide/protein, oral insulin would be hydrolysed by pepsin and trypsin in the digestive tract.'
+      },
+      {
+        id: 64,
+        tier: 'foundation',
+        topic: 'Blood Glucose & Diabetes',
+        isPractical: false,
+        question: 'What is the cause of Type 2 diabetes, and what is a major risk factor for developing it?',
+        options: [
+          'Body cells (liver and muscle cells) no longer respond effectively to insulin produced by the pancreas; obesity is a major risk factor',
+          'The pancreas has been surgically removed; bacterial infection is the main risk factor',
+          'The kidneys produce too much insulin; low vitamin C is the main risk factor',
+          'The liver cannot store any vitamins; high altitude is the main risk factor'
+        ],
+        answer: 0,
+        explanation: 'In Type 2 diabetes, insulin resistance develops in target cells despite normal/high insulin production; obesity and physical inactivity strongly increase risk.'
+      },
+      {
+        id: 65,
+        tier: 'foundation',
+        topic: 'Blood Glucose & Diabetes',
+        isPractical: false,
+        question: 'How is Type 2 diabetes commonly controlled and managed in its early stages?',
+        options: [
+          'By following a carbohydrate-controlled diet and taking regular physical exercise (to increase glucose uptake/respiration and promote weight loss)',
+          'By receiving a kidney transplant',
+          'By injecting glucagon before every meal',
+          'By taking antiviral medication'
+        ],
+        answer: 0,
+        explanation: 'Lifestyle management—controlling carbohydrate intake to avoid blood glucose spikes and exercising regularly to use up glucose and improve insulin sensitivity—is the primary treatment.'
+      },
+      {
+        id: 66,
+        tier: 'higher',
+        topic: 'Blood Glucose & Diabetes',
+        isPractical: false,
+        question: 'On a glucose tolerance test graph, two patients drink 75 g of glucose at t = 0 minutes. Patient X’s blood glucose rises to 15.5 mmol/dm³ and remains above 11 mmol/dm³ after 2 hours, whereas Patient Y’s rises to 7.8 mmol/dm³ and returns to 5.0 mmol/dm³ within 90 minutes. Which patient has diabetes and why?',
+        options: [
+          'Patient X has diabetes because their blood glucose rose much higher and failed to return to baseline due to lack of insulin secretion (Type 1) or insulin resistance (Type 2)',
+          'Patient Y has diabetes because their blood glucose returned to 5.0 mmol/dm³ too quickly',
+          'Neither patient has diabetes because both drank the same mass of glucose',
+          'Both patients have Type 1 diabetes'
+        ],
+        answer: 0,
+        explanation: 'Persistently elevated blood glucose following a glucose load indicates impaired insulin action (diabetes).'
+      },
+      {
+        id: 67,
+        tier: 'higher',
+        topic: 'Blood Glucose & Diabetes',
+        isPractical: false,
+        question: 'Why does a person with untreated diabetes often produce large volumes of sweet-smelling urine and feel constantly thirsty?',
+        options: [
+          'Blood glucose exceeds the kidney’s reabsorption capacity so glucose spills into urine, drawing excess water out by osmosis (increasing urine volume and causing dehydration/thirst)',
+          'Insulin forces the kidneys to pump extra water into the bladder',
+          'The lungs stop exhaling water vapour',
+          'Glycogen blocks the urethra'
+        ],
+        answer: 0,
+        explanation: 'High blood glucose overwhelms selective reabsorption in the kidney tubules; glucose in the filtrate lowers water potential, reducing water reabsorption and causing polyuria and thirst.'
+      },
+      {
+        id: 68,
+        tier: 'foundation',
+        topic: 'Blood Glucose & Diabetes',
+        isPractical: false,
+        question: 'Why is it dangerous if a person with Type 1 diabetes injects too much insulin or skips a meal after injecting insulin?',
+        options: [
+          'Blood glucose concentration can drop dangerously low (hypoglycaemia), depriving brain cells of glucose for respiration and potentially causing confusion, coma, or death',
+          'Blood glucose rises to 50 mmol/dm³',
+          'The pancreas starts producing too much glucagon and turns into fat',
+          'Body temperature immediately rises to 45 °C'
+        ],
+        answer: 0,
+        explanation: 'Brain cells rely almost exclusively on blood glucose for aerobic respiration; excessive insulin causes severe hypoglycaemia.'
+      },
+      {
+        id: 69,
+        tier: 'higher',
+        topic: 'Blood Glucose & Diabetes',
+        isPractical: false,
+        question: 'Why must a person with Type 1 diabetes adjust their insulin dose depending on BOTH the carbohydrate content of their meal AND the amount of exercise they plan to do?',
+        options: [
+          'More carbohydrates add more glucose to the blood (needing more insulin), whereas exercise increases muscle respiration and glucose uptake (needing less insulin to prevent hypoglycaemia)',
+          'Exercise turns insulin into glucagon inside the muscles',
+          'Carbohydrates destroy insulin in the bloodstream',
+          'Insulin only works when a person is sitting completely still'
+        ],
+        answer: 0,
+        explanation: 'Matching insulin dosage to both carbohydrate absorption and muscular glucose consumption maintains stable blood glucose.'
+      },
+      {
+        id: 70,
+        tier: 'separate',
+        topic: 'Blood Glucose & Diabetes',
+        isPractical: false,
+        question: 'In Separate Biology, why is an insulin pump with a continuous glucose monitor (CGM) often more effective at preventing long-term complications of Type 1 diabetes than twice-daily manual injections?',
+        options: [
+          'It continuously tracks blood glucose and delivers tiny, precise basal and mealtime doses of insulin, mimicking natural pancreatic negative feedback and avoiding extreme highs and lows',
+          'It cures Type 1 diabetes permanently after 30 days',
+          'It converts Type 1 diabetes into Type 2 diabetes',
+          'It removes the need for the liver to store glycogen'
+        ],
+        answer: 0,
+        explanation: 'Closed-loop/sensor-augmented insulin pumps keep blood glucose within a tighter physiological range, reducing microvascular damage to eyes, kidneys, and nerves.'
+      },
+      {
+        id: 71,
+        tier: 'foundation',
+        topic: 'Blood Glucose & Diabetes',
+        isPractical: false,
+        question: 'Notice the spelling difference in AQA Biology: what is the difference between GLUCOSE, GLYCOGEN, and GLUCAGON?',
+        options: [
+          'Glucose is the soluble monosaccharide sugar in blood; Glycogen is the insoluble storage polysaccharide in liver/muscles; Glucagon is the hormone that converts glycogen back into glucose',
+          'Glucose is a hormone; Glycogen is a vitamin; Glucagon is a mineral ion',
+          'All three are different names for the exact same sugar molecule',
+          'Glucagon is stored in plant roots; Glycogen is found in urine'
+        ],
+        answer: 0,
+        explanation: 'Examiners penalise spelling mix-ups between glucose (sugar), glycogen (storage carbohydrate), and glucagon (pancreatic hormone).'
+      },
+      {
+        id: 72,
+        tier: 'higher',
+        topic: 'Blood Glucose & Diabetes',
+        isPractical: false,
+        question: 'A patient’s fasting blood glucose level is 5.2 mmol/dm³. After a meal it rises to 8.4 mmol/dm³. Calculate the percentage increase in blood glucose concentration (to 1 decimal place).',
+        options: ['61.5%', '38.1%', '3.2%', '161.5%'],
+        answer: 0,
+        explanation: 'Increase = 8.4 − 5.2 = 3.2 mmol/dm³. Percentage increase = (3.2 ÷ 5.2) × 100 = 61.538% ≈ 61.5%.'
+      },
+
+      // -------------------- SUBTOPIC 6: WATER & NITROGEN BALANCE / KIDNEYS — SEPARATE BIOLOGY ONLY (14) --------------------
+      {
+        id: 73,
+        tier: 'separate',
+        topic: 'Water & Nitrogen Balance / Kidneys (Separate)',
+        isPractical: false,
+        question: 'Why must water and mineral ion levels in the blood plasma be tightly regulated by homeostasis (Separate Biology 8461)?',
+        options: [
+          'If body fluids become too dilute or too concentrated, water will enter or leave body cells by osmosis, causing animal cells to swell and burst (lysis) or shrink (crenate) and stop functioning properly',
+          'Because water is needed to make cellulose cell walls in human skin',
+          'Because mineral ions provide energy for aerobic respiration',
+          'Because blood cannot flow through veins unless it is 100% pure water'
+        ],
+        answer: 0,
+        explanation: 'Animal cells lack a rigid cell wall; osmotic imbalances damage cells and disrupt enzyme activity.'
+      },
+      {
+        id: 74,
+        tier: 'separate',
+        topic: 'Water & Nitrogen Balance / Kidneys (Separate)',
+        isPractical: false,
+        question: 'Which three ways does the human body lose water, and which ONE of these is actively controlled to maintain water balance?',
+        options: [
+          'Water is lost via the lungs (exhalation), skin (sweating), and kidneys (urine); ONLY water loss via the KIDNEYS is controlled to regulate water balance',
+          'Lungs, skin, and kidneys; ONLY water loss via the LUNGS is controlled',
+          'Sweating, tears, and saliva; ONLY sweating is controlled',
+          'All three routes are controlled equally by the hormone insulin'
+        ],
+        answer: 0,
+        explanation: 'Water loss via exhalation and sweating is uncontrolled (sweating serves thermoregulation), whereas the kidneys adjust urine concentration/volume to maintain water balance.'
+      },
+      {
+        id: 75,
+        tier: 'separate',
+        topic: 'Water & Nitrogen Balance / Kidneys (Separate)',
+        isPractical: false,
+        question: 'What happens to excess amino acids (from digested dietary proteins) in the human body?',
+        options: [
+          'In the liver, excess amino acids are deaminated to form ammonia; because ammonia is toxic, it is immediately converted into urea for safe excretion by the kidneys',
+          'Excess amino acids are stored as insoluble protein grains in the gall bladder',
+          'Excess amino acids are converted into glucose and exhaled through the lungs',
+          'Excess amino acids are absorbed directly into the skin to make hair'
+        ],
+        answer: 0,
+        explanation: 'Deamination in the liver removes the amino group (-NH₂) from excess amino acids to form toxic ammonia, which is rapidly converted into less toxic urea.'
+      },
+      {
+        id: 76,
+        tier: 'separate',
+        topic: 'Water & Nitrogen Balance / Kidneys (Separate)',
+        isPractical: false,
+        question: 'How do healthy kidneys produce urine from blood?',
+        options: [
+          'By filtration of the blood (small molecules like water, urea, ions, and glucose pass into kidney tubules while large proteins and blood cells stay in the blood), followed by selective reabsorption of ALL glucose, some ions, and needed water back into the blood',
+          'By pumping red blood cells into the bladder and digesting them into urea',
+          'By absorbing urine from the large intestine',
+          'By filtering out proteins and cells while leaving all glucose in the urine'
+        ],
+        answer: 0,
+        explanation: 'Ultrafiltration separates small solutes from large plasma proteins/cells, and selective reabsorption reclaims 100% of glucose plus regulated amounts of ions and water.'
+      },
+      {
+        id: 77,
+        tier: 'separate',
+        topic: 'Water & Nitrogen Balance / Kidneys (Separate)',
+        isPractical: false,
+        question: 'Why does the urine of a healthy person contain NO protein and NO glucose, even though glucose is small enough to be filtered out of the blood in the kidney?',
+        options: [
+          'Protein molecules are too large to pass through the filter into the kidney tubules, while 100% of filtered glucose is selectively reabsorbed back into the blood by active transport',
+          'Both protein and glucose are destroyed by hydrochloric acid inside the bladder',
+          'The liver removes all glucose and protein before blood reaches the kidneys',
+          'Glucose evaporates out of the kidneys before reaching the ureter'
+        ],
+        answer: 0,
+        explanation: 'Large plasma proteins never enter the glomerular filtrate; glucose enters the filtrate but is completely reabsorbed in the proximal convoluted tubule.'
+      },
+      {
+        id: 78,
+        tier: 'separate',
+        topic: 'Water & Nitrogen Balance / Kidneys (Separate)',
+        isPractical: false,
+        question: 'In Separate Biology (Higher Tier), which hormone controls the water level of the blood, and which gland secretes it?',
+        options: [
+          'ADH (anti-diuretic hormone), secreted by the pituitary gland in the brain',
+          'FSH (follicle stimulating hormone), secreted by the ovaries',
+          'Insulin, secreted by the pancreas',
+          'Adrenaline, secreted by the adrenal glands'
+        ],
+        answer: 0,
+        explanation: 'Receptors in the brain detect blood water concentration and stimulate the pituitary gland to release ADH into the bloodstream.'
+      },
+      {
+        id: 79,
+        tier: 'separate',
+        topic: 'Water & Nitrogen Balance / Kidneys (Separate)',
+        isPractical: false,
+        question: 'In Separate Biology (Higher Tier), how does ADH respond when a person is dehydrated (blood water concentration is TOO LOW / blood is too concentrated)?',
+        options: [
+          'The pituitary gland releases MORE ADH, which makes the kidney tubules (collecting ducts) MORE permeable to water so MORE water is reabsorbed back into the blood, producing a small volume of concentrated urine',
+          'The pituitary gland releases LESS ADH, making kidney tubules less permeable so large volumes of dilute urine are produced',
+          'The pituitary gland releases MORE ADH, which stops all water reabsorption',
+          'The kidneys stop filtering urea completely'
+        ],
+        answer: 0,
+        explanation: 'More ADH → increased tubule permeability → greater water reabsorption into blood → concentrated, low-volume urine and restoration of blood water potential.'
+      },
+      {
+        id: 80,
+        tier: 'separate',
+        topic: 'Water & Nitrogen Balance / Kidneys (Separate)',
+        isPractical: false,
+        question: 'Conversely, if a person drinks a large volume of water and their blood becomes TOO DILUTE, how does negative feedback via ADH restore normal water levels?',
+        options: [
+          'The pituitary gland releases LESS ADH, so kidney tubules become LESS permeable to water, LESS water is reabsorbed into the blood, and a large volume of dilute urine is produced',
+          'The pituitary gland releases MORE ADH to retain extra water',
+          'The sweat glands stop working completely',
+          'The liver converts excess water into glycogen'
+        ],
+        answer: 0,
+        explanation: 'Less ADH decreases collecting duct permeability, allowing excess water to pass out in dilute urine.'
+      },
+      {
+        id: 81,
+        tier: 'separate',
+        topic: 'Water & Nitrogen Balance / Kidneys (Separate)',
+        isPractical: false,
+        question: 'How does a kidney dialysis machine clean the blood of a patient with kidney failure?',
+        options: [
+          'The patient’s blood flows alongside dialysis fluid separated by a partially permeable membrane; the dialysis fluid contains the same concentration of useful substances (glucose and ions) as healthy blood so no glucose is lost, but NO urea so urea diffuses out of the blood into the fluid',
+          'The machine boils the blood to evaporate urea and then cools it down',
+          'The dialysis fluid contains high concentrations of urea so urea diffuses into the blood',
+          'The machine injects ADH and insulin directly into the red blood cells'
+        ],
+        answer: 0,
+        explanation: 'Matching glucose and ion concentrations prevents net loss of essential solutes, while zero urea in the dialysate maintains a steep diffusion gradient to clear urea from blood.'
+      },
+      {
+        id: 82,
+        tier: 'separate',
+        topic: 'Water & Nitrogen Balance / Kidneys (Separate)',
+        isPractical: false,
+        question: 'Why does dialysis fluid contain the EXACT same concentration of glucose (e.g. 5 mmol/dm³) as normal healthy blood plasma?',
+        options: [
+          'So there is no concentration gradient for glucose across the partially permeable membrane, ensuring vital glucose does not diffuse out of the patient’s blood',
+          'So glucose diffuses into the blood to cure diabetes',
+          'To give energy to the plastic dialysis tubing',
+          'To kill bacteria inside the dialysis machine'
+        ],
+        answer: 0,
+        explanation: 'Equal glucose concentration on both sides of the membrane results in zero net diffusion of glucose.'
+      },
+      {
+        id: 83,
+        tier: 'separate',
+        topic: 'Water & Nitrogen Balance / Kidneys (Separate)',
+        isPractical: false,
+        question: 'Compare the advantages and disadvantages of a kidney transplant versus long-term kidney dialysis for treating kidney failure.',
+        options: [
+          'Transplant: frees patient from hours on a dialysis machine, no strict diet, cheaper long-term, but risks tissue rejection (requiring lifelong immunosuppressant drugs) and shortage of donor kidneys; Dialysis: readily available without surgery, but time-consuming, strict diet, and expensive long-term',
+          'Transplant: requires zero medication and never faces rejection; Dialysis: permanently cures the damaged kidneys in 2 weeks',
+          'Transplant: only works for 6 months; Dialysis: is performed once a year for 10 minutes',
+          'Both treatments have identical risks and require daily surgery'
+        ],
+        answer: 0,
+        explanation: 'Transplants restore continuous natural kidney function and quality of life, weighed against donor availability, surgical risk, and lifelong immunosuppression.'
+      },
+      {
+        id: 84,
+        tier: 'separate',
+        topic: 'Water & Nitrogen Balance / Kidneys (Separate)',
+        isPractical: false,
+        question: 'Why must a kidney transplant recipient take immunosuppressant drugs for the rest of their life (unless the donor is an identical twin)?',
+        options: [
+          'Because the donor kidney has different cell-surface antigens, so the recipient’s white blood cells would otherwise recognise it as foreign and attack/reject the transplanted organ',
+          'To prevent the new kidney from filtering urea',
+          'To stimulate the transplanted kidney to produce insulin',
+          'To make the patient’s blood group change to match the donor'
+        ],
+        answer: 0,
+        explanation: 'Suppressing the immune response prevents lymphocytes from destroying the foreign tissue, though it leaves the patient slightly more susceptible to infectious diseases.'
+      },
+      {
+        id: 85,
+        tier: 'separate',
+        topic: 'Water & Nitrogen Balance / Kidneys (Separate)',
+        isPractical: false,
+        question: 'Why is a patient awaiting a kidney transplant advised to follow a low-protein diet while on dialysis?',
+        options: [
+          'Eating less protein reduces the amount of excess amino acids deaminated in the liver, lowering the buildup of toxic urea in the blood between dialysis sessions',
+          'Protein blocks the partially permeable membrane by turning into starch',
+          'Low-protein diets increase ADH production in the pancreas',
+          'Protein causes red blood cells to burst during dialysis'
+        ],
+        answer: 0,
+        explanation: 'Reducing excess dietary protein limits deamination and decreases the rate at which urea accumulates in blood plasma.'
+      },
+      {
+        id: 86,
+        tier: 'separate',
+        topic: 'Water & Nitrogen Balance / Kidneys (Separate)',
+        isPractical: false,
+        question: 'Which blood vessel carries unfiltered blood rich in urea INTO the kidney, and which blood vessel carries cleaned blood OUT of the kidney?',
+        options: [
+          'Renal artery brings unfiltered blood in; renal vein carries cleaned blood out',
+          'Renal vein brings unfiltered blood in; renal artery carries cleaned blood out',
+          'Hepatic portal vein brings blood in; aorta carries cleaned blood out',
+          'Pulmonary artery brings blood in; vena cava carries cleaned blood out'
+        ],
+        answer: 0,
+        explanation: 'The renal artery branches from the aorta to supply the kidneys; the renal vein returns filtered, osmoregulated blood to the vena cava.'
+      },
+
+      // -------------------- SUBTOPIC 7: REPRODUCTIVE HORMONES, CONTRACEPTION & ENDOCRINE (14) --------------------
+      {
+        id: 87,
+        tier: 'foundation',
+        topic: 'Reproductive Hormones & Endocrine',
+        isPractical: false,
+        question: 'Why is the pituitary gland in the brain often referred to as the "master gland" of the endocrine system?',
+        options: [
+          'Because it secretes several hormones into the blood in response to body conditions, and many of these hormones act on other endocrine glands to stimulate them to release other hormones',
+          'Because it pumps blood around the entire body',
+          'Because it is the largest organ in the abdomen',
+          'Because it digests all proteins, fats, and carbohydrates'
+        ],
+        answer: 0,
+        explanation: 'The pituitary gland secretes trophic hormones (such as FSH, LH, and TSH) that regulate other endocrine glands.'
+      },
+      {
+        id: 88,
+        tier: 'foundation',
+        topic: 'Reproductive Hormones & Endocrine',
+        isPractical: false,
+        question: 'What are the main male and female reproductive hormones responsible for secondary sexual characteristics at puberty?',
+        options: [
+          'Testosterone (produced by the testes, stimulates sperm production) and Oestrogen (produced by the ovaries, controls the menstrual cycle)',
+          'Insulin (produced by the pancreas) and Adrenaline (produced by the kidneys)',
+          'Glucagon (produced by the liver) and Thyroxine (produced by the stomach)',
+          'Progesterone (produced by the testes) and FSH (produced by the uterus)'
+        ],
+        answer: 0,
+        explanation: 'Testosterone from the testes stimulates sperm production and male puberty changes; oestrogen from the ovaries drives female puberty changes and uterine lining thickening.'
+      },
+      {
+        id: 89,
+        tier: 'foundation',
+        topic: 'Reproductive Hormones & Endocrine',
+        isPractical: false,
+        question: 'Match the four menstrual cycle hormones to their primary roles: FSH, LH, Oestrogen, and Progesterone.',
+        options: [
+          'FSH: causes an egg to mature in an ovary; LH: stimulates release of the egg (ovulation); Oestrogen & Progesterone: maintain the uterus lining (oestrogen thickens it; progesterone maintains it)',
+          'FSH: thickens the uterus lining; LH: stops egg maturation; Oestrogen: causes ovulation; Progesterone: stimulates sperm production',
+          'FSH: lowers blood glucose; LH: increases heart rate; Oestrogen: causes shivering; Progesterone: filters urea',
+          'FSH: breaks down the uterus lining; LH: matures eggs; Oestrogen: inhibits ovulation; Progesterone: stimulates FSH'
+        ],
+        answer: 0,
+        explanation: 'FSH matures follicles/eggs, LH triggers ovulation around day 14, oestrogen repairs/thickens the endometrium, and progesterone maintains the lining.'
+      },
+      {
+        id: 90,
+        tier: 'higher',
+        topic: 'Reproductive Hormones & Endocrine',
+        isPractical: false,
+        question: 'In Higher Tier, how do FSH, oestrogen, LH, and progesterone interact via feedback during the 28-day menstrual cycle?',
+        options: [
+          'FSH stimulates ovaries to produce oestrogen; rising oestrogen inhibits FSH (preventing more eggs maturing) and stimulates a surge of LH (causing ovulation); after ovulation, the empty follicle secretes progesterone which maintains the uterus lining and inhibits both FSH and LH',
+          'Progesterone stimulates FSH and LH to cause multiple ovulations every day',
+          'Oestrogen destroys progesterone and prevents the uterus lining from ever thickening',
+          'LH inhibits oestrogen and triggers menstruation on day 14'
+        ],
+        answer: 0,
+        explanation: 'Oestrogen switches pituitary secretion from FSH to an LH surge (positive feedback on LH); post-ovulation progesterone inhibits FSH and LH so no further eggs mature during potential pregnancy.'
+      },
+      {
+        id: 91,
+        tier: 'foundation',
+        topic: 'Reproductive Hormones & Endocrine',
+        isPractical: false,
+        question: 'How do hormonal contraceptives (such as the combined oral contraceptive pill, patch, or implant containing oestrogen and/or progesterone) prevent pregnancy?',
+        options: [
+          'They inhibit FSH production so that no eggs mature in the ovaries, and progesterone also thickens cervical mucus to prevent sperm reaching an egg and thins the uterus lining',
+          'They physically block the vagina like a condom and kill all bacteria',
+          'They stimulate high levels of FSH and LH to release all eggs at once',
+          'They stop the testes from producing testosterone'
+        ],
+        answer: 0,
+        explanation: 'Elevated oestrogen/progesterone inhibits pituitary FSH secretion (halting follicle maturation/ovulation) and makes cervical mucus hostile to sperm.'
+      },
+      {
+        id: 92,
+        tier: 'foundation',
+        topic: 'Reproductive Hormones & Endocrine',
+        isPractical: false,
+        question: 'Which statement accurately compares barrier methods of contraception (condoms and diaphragms) with hormonal contraception?',
+        options: [
+          'Barrier methods physically prevent sperm from reaching the egg without hormonal side effects, and condoms also protect against sexually transmitted infections (STIs); hormonal methods have higher efficacy when used properly but do not protect against STIs',
+          'Barrier methods require daily hormone injections; hormonal pills protect against HIV and gonorrhoea',
+          'Condoms prevent eggs from maturing in the ovaries',
+          'Spermicidal agents kill eggs inside the ovaries'
+        ],
+        answer: 0,
+        explanation: 'Condoms provide dual protection (contraception + STI barrier) with no systemic hormone side effects, whereas hormonal methods suppress ovulation with very high effectiveness.'
+      },
+      {
+        id: 93,
+        tier: 'higher',
+        topic: 'Reproductive Hormones & Endocrine',
+        isPractical: false,
+        question: 'In Higher Tier, how can fertility drugs containing FSH and LH help a woman who is unable to conceive because she does not ovulate?',
+        options: [
+          'FSH stimulates eggs to mature in her ovaries and LH triggers ovulation (release of mature eggs), allowing her to become pregnant naturally',
+          'FSH and LH thicken cervical mucus to trap sperm',
+          'FSH and LH lower her blood glucose levels',
+          'FSH and LH replace the need for fertilisation'
+        ],
+        answer: 0,
+        explanation: 'Administering FSH and LH stimulates follicular development and ovulation in women with low endogenous gonadotropin levels.'
+      },
+      {
+        id: 94,
+        tier: 'higher',
+        topic: 'Reproductive Hormones & Endocrine',
+        isPractical: false,
+        question: 'What are the main steps of In Vitro Fertilisation (IVF), and what are two major drawbacks/risks associated with it?',
+        options: [
+          'Steps: give mother FSH and LH to mature several eggs, collect eggs and fertilise them with father’s sperm in a laboratory, allow embryos to develop into tiny balls of cells, and insert one or two embryos into the mother’s uterus. Drawbacks: emotionally/physically stressful, low success rates, and risk of multiple births (twins/triplets)',
+          'Steps: inject insulin and glucagon into the uterus. Drawbacks: causes Type 2 diabetes and myopia',
+          'Steps: remove the ovaries and freeze them for 10 years. Drawbacks: causes kidney failure',
+          'Steps: give high doses of progesterone to stop egg maturation. Drawbacks: guarantees 100% success every time'
+        ],
+        answer: 0,
+        explanation: 'IVF involves hormonal superovulation, egg retrieval, laboratory fertilisation, embryo culture, and uterine transfer—carrying emotional stress, modest success rates, and multiple-pregnancy risks.'
+      },
+      {
+        id: 95,
+        tier: 'higher',
+        topic: 'Reproductive Hormones & Endocrine',
+        isPractical: false,
+        question: 'In Higher Tier, what is the function of ADRENALINE (produced by the adrenal glands in times of fear or stress), and why is it NOT controlled by negative feedback?',
+        options: [
+          'It increases heart rate and breathing rate, boosting the delivery of oxygen and glucose to the brain and muscles to prepare the body for "fight or flight"; it is an acute emergency response rather than maintaining a constant baseline',
+          'It lowers heart rate and puts the body to sleep via negative feedback',
+          'It converts blood glucose into glycogen in the pancreas',
+          'It stimulates egg maturation in the ovaries'
+        ],
+        answer: 0,
+        explanation: 'Adrenaline prepares the body rapidly for fight-or-flight by elevating heart rate, dilating bronchioles/pupils, and mobilising glucose; it is triggered by acute stress rather than homeostatic negative feedback.'
+      },
+      {
+        id: 96,
+        tier: 'higher',
+        topic: 'Reproductive Hormones & Endocrine',
+        isPractical: false,
+        question: 'In Higher Tier, what is the role of THYROXINE (secreted by the thyroid gland), and how is its level regulated by negative feedback?',
+        options: [
+          'Thyroxine stimulates the basal metabolic rate (BMR) and plays an important role in growth and development; low blood thyroxine stimulates the pituitary to release TSH (thyroid stimulating hormone), while high thyroxine inhibits TSH release',
+          'Thyroxine lowers blood glucose; it is controlled by insulin from the liver',
+          'Thyroxine triggers ovulation on day 14; it is controlled by progesterone',
+          'Thyroxine constricts skin capillaries; it is controlled by ADH'
+        ],
+        answer: 0,
+        explanation: 'Thyroxine regulates basal metabolic rate; pituitary TSH stimulates thyroxine secretion, and rising thyroxine inhibits TSH via classic negative feedback.'
+      },
+      {
+        id: 97,
+        tier: 'foundation',
+        topic: 'Reproductive Hormones & Endocrine',
+        isPractical: false,
+        question: 'How do intrauterine devices (IUDs / coils) prevent pregnancy?',
+        options: [
+          'Plastic/copper IUDs prevent the implantation of an embryo in the uterus lining (and hormonal IUDs also release progesterone to thicken cervical mucus and thin the lining)',
+          'They stop the pituitary gland from producing adrenaline',
+          'They filter sperm out of the bloodstream in the kidneys',
+          'They prevent ovulation by cooling the ovaries'
+        ],
+        answer: 0,
+        explanation: 'IUDs are inserted into the uterus to prevent embryo implantation (and progestogen-releasing IUS devices also thicken cervical mucus).'
+      },
+      {
+        id: 98,
+        tier: 'higher',
+        topic: 'Reproductive Hormones & Endocrine',
+        isPractical: false,
+        question: 'On a menstrual cycle hormone graph, progesterone levels remain high from day 15 to day 26 and then drop sharply on day 27. What happens immediately on day 28 as a direct result of this drop in progesterone?',
+        options: [
+          'The thickened uterus lining breaks down and is shed through the vagina (menstruation / period begins), and inhibition on FSH is lifted so a new follicle starts maturing',
+          'Ovulation occurs and an egg is released from the ovary',
+          'Fertilisation takes place in the fallopian tube',
+          'Adrenaline levels surge to maximum'
+        ],
+        answer: 0,
+        explanation: 'If no embryo implants, the corpus luteum degenerates, progesterone falls, the endometrium sheds (menstruation), and FSH rises again to start the next cycle.'
+      },
+      {
+        id: 99,
+        tier: 'foundation',
+        topic: 'Reproductive Hormones & Endocrine',
+        isPractical: false,
+        question: 'Where in the body are the adrenal glands located?',
+        options: [
+          'Just above (on top of) each kidney',
+          'Inside the skull beneath the hypothalamus',
+          'In the neck wrapped around the trachea',
+          'Behind the stomach in the upper abdomen'
+        ],
+        answer: 0,
+        explanation: 'The two adrenal glands sit directly on top of the kidneys and secrete adrenaline.'
+      },
+      {
+        id: 100,
+        tier: 'higher',
+        topic: 'Reproductive Hormones & Endocrine',
+        isPractical: false,
+        question: 'Why did early combined contraceptive pills in the 1960s contain much higher doses of oestrogen than modern low-dose pills?',
+        options: [
+          'Scientists found that lower doses of oestrogen (combined with progesterone) were just as effective at inhibiting FSH while significantly reducing serious side effects such as blood clots (thrombosis) and high blood pressure',
+          'Because modern women have smaller pituitary glands',
+          'Because high doses of oestrogen caused teeth to fall out',
+          'Because oestrogen is now made from penicillin'
+        ],
+        answer: 0,
+        explanation: 'Reducing oestrogen dosage maintained contraceptive efficacy while lowering cardiovascular risks like thromboembolism.'
+      },
+
+      // -------------------- SUBTOPIC 8: PLANT HORMONES & RP8 SEEDLING GROWTH — SEPARATE BIOLOGY ONLY (8) --------------------
+      {
+        id: 101,
+        tier: 'separate',
+        topic: 'Plant Hormones & RP8 Seedling Growth (Separate)',
+        isPractical: false,
+        question: 'How does the plant hormone AUXIN cause a plant shoot to bend towards a light source (positive phototropism) (Separate Biology 8461)?',
+        options: [
+          'Auxin accumulates on the SHADED side of the shoot tip, stimulating cell elongation (growth) faster on the shaded side than on the illuminated side, so the shoot bends towards the light',
+          'Auxin accumulates on the LIT side of the shoot and kills cells on the shaded side',
+          'Auxin moves to the roots and makes them grow above the soil',
+          'Auxin causes cells on the shaded side to divide by meiosis'
+        ],
+        answer: 0,
+        explanation: 'In shoots, auxin promotes cell elongation; unequal auxin distribution towards the shaded side makes shaded cells elongate more, bending the tip towards light.'
+      },
+      {
+        id: 102,
+        tier: 'separate',
+        topic: 'Plant Hormones & RP8 Seedling Growth (Separate)',
+        isPractical: false,
+        question: 'If a potted seedling is placed lying horizontally on its side in the dark, how does AUXIN affect the horizontal shoot versus the horizontal root (gravitropism / geotropism)?',
+        options: [
+          'Gravity pulls auxin to the LOWER side of both organs: in the shoot, higher auxin stimulates cell elongation so the shoot bends UPWARDS (negative gravitropism); in the root, higher auxin INHIBITS cell elongation so the top side grows faster and the root bends DOWNWARDS (positive gravitropism)',
+          'Auxin stimulates cell elongation equally in both roots and shoots, so both bend upwards',
+          'Auxin moves to the upper side of the root and stimulates growth downwards',
+          'Plants cannot respond to gravity in the dark'
+        ],
+        answer: 0,
+        explanation: 'Auxin has opposite effects in shoots vs roots: it stimulates elongation in shoots (bending upward) but inhibits elongation in roots (bending downward into soil).'
+      },
+      {
+        id: 103,
+        tier: 'separate',
+        topic: 'Plant Hormones & RP8 Seedling Growth (Separate)',
+        isPractical: false,
+        question: 'In Separate Biology (Higher Tier), what are the roles of GIBBERELLINS and ETHENE in plants?',
+        options: [
+          'Gibberellins are important in initiating seed germination; Ethene controls cell division and the ripening of fruits',
+          'Gibberellins cause fruit ripening; Ethene causes leaves to fall off in spring',
+          'Gibberellins close stomata in drought; Ethene makes chlorophyll in roots',
+          'Both gibberellins and ethene are human reproductive hormones'
+        ],
+        answer: 0,
+        explanation: 'Gibberellins end seed dormancy and initiate germination; ethene is a gaseous plant hormone that promotes fruit ripening.'
+      },
+      {
+        id: 104,
+        tier: 'separate',
+        topic: 'Plant Hormones & RP8 Seedling Growth (Separate)',
+        isPractical: false,
+        question: 'In Separate Biology (Higher Tier), how are auxins, gibberellins, and ethene used commercially in agriculture and horticulture?',
+        options: [
+          'Auxins: selective weedkillers, rooting powders, and promoting growth in tissue culture; Gibberellins: ending seed dormancy, promoting flowering, and increasing fruit size (e.g. seedless grapes); Ethene: controlling fruit ripening during storage and transport',
+          'Auxins: killing soil bacteria; Gibberellins: curing rose black spot; Ethene: freezing apples',
+          'Auxins: making bread rise; Gibberellins: fermenting beer; Ethene: making yoghurt',
+          'All three are used as antibiotics to treat cattle diseases'
+        ],
+        answer: 0,
+        explanation: 'Plant hormones enable precision crop management: synthetic auxins target broad-leaved weeds/root cuttings, gibberellins boost fruit size/germination, and ethene ripens harvested fruit on demand.'
+      },
+      {
+        id: 105,
+        tier: 'separate',
+        topic: 'Plant Hormones & RP8 Seedling Growth (Separate)',
+        isPractical: true,
+        question: 'In Separate Biology Required Practical 8 (investigating the effect of light on the growth of newly germinated seedlings), why are three Petri dishes of mustard/cress seedlings placed in: (1) full overhead light, (2) darkness, and (3) unilateral light (light from one side only)?',
+        options: [
+          'To compare normal upright growth (overhead light), etiolated tall/yellow growth without light (darkness), and directional bending towards the light source (unilateral light / phototropism)',
+          'To test which dish produces the most carbon dioxide',
+          'To measure the reaction time of seedlings with a ruler',
+          'To kill the seedlings in the dark dish'
+        ],
+        answer: 0,
+        explanation: 'Comparing overhead light, total darkness, and unilateral light isolates the effects of light presence and light direction on shoot elongation and phototropic curvature.'
+      },
+      {
+        id: 106,
+        tier: 'separate',
+        topic: 'Plant Hormones & RP8 Seedling Growth (Separate)',
+        isPractical: true,
+        question: 'In Required Practical 8, what are the key control variables that must be kept constant across all three Petri dishes of germinating seeds?',
+        options: [
+          'Same species and number of seeds per dish, same volume of water added to cotton wool, same temperature, and same duration of growth (e.g. 5–7 days)',
+          'Same direction of light and same shoot height at the end',
+          'Different temperatures for each dish',
+          'Different types of seeds in each dish'
+        ],
+        answer: 0,
+        explanation: 'Controlling water volume, temperature, seed species/number, and time ensures only light exposure differs between treatments.'
+      },
+      {
+        id: 107,
+        tier: 'separate',
+        topic: 'Plant Hormones & RP8 Seedling Growth (Separate)',
+        isPractical: true,
+        question: 'In Required Practical 8, how do you accurately measure the curved height/length of seedlings that have bent towards unilateral light?',
+        options: [
+          'Lay a piece of cotton thread along the curved stem from the base to the tip, mark the length, and then measure the straightened thread against a millimetre ruler',
+          'Squash the seedling flat with a heavy book until it snaps',
+          'Guess the height by eye without using a ruler',
+          'Measure only the straight distance from the cotton wool to the ceiling'
+        ],
+        answer: 0,
+        explanation: 'Using a piece of thread (or flexible paper strip) to trace the curvature gives an accurate measurement of true stem elongation.'
+      },
+      {
+        id: 108,
+        tier: 'separate',
+        topic: 'Plant Hormones & RP8 Seedling Growth (Separate)',
+        isPractical: true,
+        question: 'In Required Practical 8, when investigating gravitropism (geotropism) in roots and shoots, what is the purpose of a rotating "clinostat" (a motorised turntable rotating seedlings slowly)?',
+        options: [
+          'It rotates the seedlings continuously so gravity acts equally on all sides, cancelling out directional gravitational stimulus to act as a valid control',
+          'It shines bright UV light onto the roots',
+          'It waters the seedlings automatically every 10 seconds',
+          'It spins the seedlings so fast that all the auxin flies out of the tips'
+        ],
+        answer: 0,
+        explanation: 'Continuous slow rotation on a clinostat ensures uniform gravitational exposure on every side, preventing unequal auxin distribution and demonstrating that gravity causes the bending in stationary horizontal seedlings.'
+      }
+    ];
+
+    // =========================================================================
+    // 2. STATE MANAGEMENT
+    // =========================================================================
+    let state = {
+      studentName: '',
+      studentEmail: '',
+      selectedTier: 'higher', // 'foundation' | 'higher' | 'separate'
+      selectedMode: 'all',    // 'all' | 'rp'
+      selectedCount: 20,
+      activeQuestions: [],
+      currentIndex: 0,
+      score: 0,
+      answeredCurrent: false,
+      userResponses: [],      // { questionObj, chosenIndex, isCorrect }
+      isMissedRetry: false
+    };
+
+    // =========================================================================
+    // 3. FILTERING & POOL HELPERS
+    // =========================================================================
+    function getFilteredPool(tier, mode) {
+      return QUESTION_BANK.filter(item => {
+        let tierMatch = false;
+        if (tier === 'foundation') {
+          tierMatch = item.tier === 'foundation';
+        } else if (tier === 'higher') {
+          tierMatch = item.tier === 'foundation' || item.tier === 'higher';
+        } else {
+          tierMatch = item.tier === 'foundation' || item.tier === 'higher' || item.tier === 'separate';
+        }
+
+        if (!tierMatch) return false;
+        if (mode === 'rp') return item.isPractical === true;
+        return true;
+      });
+    }
+
+    function shuffleArray(array) {
+      const copy = [...array];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function prepareQuestionWithShuffledOptions(item) {
+      const indexed = item.options.map((text, idx) => ({
+        text,
+        isCorrect: idx === item.answer
+      }));
+      const shuffled = shuffleArray(indexed);
+      return {
+        ...item,
+        shuffledOptions: shuffled,
+        shuffledAnswerIndex: shuffled.findIndex(o => o.isCorrect)
+      };
+    }
+
+    // =========================================================================
+    // 4. START SCREEN UI INTERACTIONS
+    // =========================================================================
+    function selectTier(tier) {
+      state.selectedTier = tier;
+
+      document.querySelectorAll('.tier-btn').forEach(btn => {
+        const isSelected = btn.dataset.tier === tier;
+        const check = btn.querySelector('.tier-check');
+        if (isSelected) {
+          btn.classList.remove('border-slate-200', 'bg-slate-50');
+          btn.classList.add('border-teal-600', 'bg-teal-50/60', 'shadow-sm');
+          check.classList.remove('border-slate-300');
+          check.classList.add('border-teal-600', 'bg-teal-600');
+        } else {
+          btn.classList.add('border-slate-200', 'bg-slate-50');
+          btn.classList.remove('border-teal-600', 'bg-teal-50/60', 'shadow-sm');
+          check.classList.add('border-slate-300');
+          check.classList.remove('border-teal-600', 'bg-teal-600');
+        }
+      });
+
+      const rpDesc = document.getElementById('modeRpDesc');
+      if (tier === 'foundation') {
+        rpDesc.textContent = 'Focused practical drill: RP7 Combined / RP6 Separate Human Reaction Time (Ruler Drop Test & Variables).';
+      } else if (tier === 'separate') {
+        rpDesc.textContent = 'Focused practical drill: RP6 Human Reaction Time (Ruler Drop) & RP8 Plant Tropisms / Seedling Growth.';
+      } else {
+        rpDesc.textContent = 'Focused practical drill: RP7 Combined / RP6 Separate Human Reaction Time (Ruler Drop, Calculations & Double-Blind Trials).';
+      }
+
+      updateSetupLabels();
+    }
+
+    function selectMode(mode) {
+      state.selectedMode = mode;
+
+      const allBtn = document.getElementById('modeAllBtn');
+      const allIcon = document.getElementById('modeAllIcon');
+      const allCheck = document.getElementById('modeAllCheck');
+
+      const rpBtn = document.getElementById('modeRpBtn');
+      const rpIcon = document.getElementById('modeRpIcon');
+      const rpCheck = document.getElementById('modeRpCheck');
+
+      if (mode === 'all') {
+        allBtn.classList.remove('border-slate-200', 'bg-slate-50');
+        allBtn.classList.add('border-teal-600', 'bg-teal-50/60', 'shadow-sm');
+        allIcon.classList.remove('bg-slate-200', 'text-slate-700');
+        allIcon.classList.add('bg-teal-600', 'text-white');
+        allCheck.classList.remove('hidden');
+
+        rpBtn.classList.remove('border-amber-500', 'bg-amber-50', 'shadow-sm');
+        rpBtn.classList.add('border-slate-200', 'bg-amber-50/40');
+        rpIcon.classList.remove('bg-amber-500', 'text-white');
+        rpIcon.classList.add('bg-amber-100', 'text-amber-800');
+        rpCheck.classList.add('hidden');
+      } else {
+        rpBtn.classList.remove('border-slate-200', 'bg-amber-50/40');
+        rpBtn.classList.add('border-amber-500', 'bg-amber-50', 'shadow-sm');
+        rpIcon.classList.remove('bg-amber-100', 'text-amber-800');
+        rpIcon.classList.add('bg-amber-500', 'text-white');
+        rpCheck.classList.remove('hidden');
+
+        allBtn.classList.remove('border-teal-600', 'bg-teal-50/60', 'shadow-sm');
+        allBtn.classList.add('border-slate-200', 'bg-slate-50');
+        allIcon.classList.remove('bg-teal-600', 'text-white');
+        allIcon.classList.add('bg-slate-200', 'text-slate-700');
+        allCheck.classList.add('hidden');
+      }
+
+      updateSetupLabels();
+    }
+
+    function selectCount(count) {
+      state.selectedCount = count;
+      document.querySelectorAll('.count-btn').forEach(btn => {
+        const btnCount = parseInt(btn.dataset.count, 10);
+        if (btnCount === count) {
+          btn.classList.remove('border-slate-200', 'bg-slate-50', 'text-slate-800', 'hover:border-teal-400');
+          btn.classList.add('border-teal-600', 'bg-teal-600', 'text-white', 'shadow-sm');
+        } else {
+          btn.classList.add('border-slate-200', 'bg-slate-50', 'text-slate-800', 'hover:border-teal-400');
+          btn.classList.remove('border-teal-600', 'bg-teal-600', 'text-white', 'shadow-sm');
+        }
+      });
+      updateSetupLabels();
+    }
+
+    function updateSetupLabels() {
+      const tierNames = {
+        foundation: 'Foundation Tier',
+        higher: 'Higher Tier',
+        separate: 'Separate Biology'
+      };
+      const tierBadges = {
+        foundation: 'Foundation Tier Selected',
+        higher: 'Higher Tier Selected',
+        separate: 'Separate Biology (8461) Selected'
+      };
+
+      document.getElementById('tierCountHint').textContent = tierBadges[state.selectedTier];
+
+      const pool = getFilteredPool(state.selectedTier, state.selectedMode);
+      const poolText = document.getElementById('poolAvailabilityText');
+      const cappedBadge = document.getElementById('cappedPoolBadge');
+
+      if (state.selectedMode === 'rp') {
+        poolText.textContent = `${pool.length} unique Required Practical questions available`;
+      } else {
+        poolText.textContent = `${pool.length} unique questions available for ${tierNames[state.selectedTier]}`;
+      }
+
+      const actualCount = Math.min(state.selectedCount, pool.length);
+      if (state.selectedCount > pool.length) {
+        cappedBadge.classList.remove('hidden');
+        cappedBadge.textContent = `Running max ${actualCount} available`;
+      } else {
+        cappedBadge.classList.add('hidden');
+      }
+
+      const startLabel = document.getElementById('startBtnLabel');
+      if (state.selectedMode === 'rp') {
+        startLabel.textContent = `Start Required Practicals Quiz (${actualCount} Questions)`;
+      } else {
+        startLabel.textContent = `Start ${tierNames[state.selectedTier]} Quiz (${actualCount} Questions)`;
+      }
+    }
+
+    function clearValidationError() {
+      const input = document.getElementById('studentNameInput');
+      const alertBox = document.getElementById('validationAlert');
+      input.classList.remove('border-rose-500', 'bg-rose-50/40');
+      alertBox.classList.add('hidden');
+    }
+
+    function handleStartQuiz(event) {
+      event.preventDefault();
+      const nameInput = document.getElementById('studentNameInput');
+      const emailInput = document.getElementById('studentEmailInput');
+      const nameVal = nameInput.value.trim();
+
+      if (!nameVal) {
+        nameInput.classList.add('border-rose-500', 'bg-rose-50/40');
+        document.getElementById('validationAlert').classList.remove('hidden');
+        nameInput.focus();
+        return;
+      }
+
+      state.studentName = nameVal;
+      state.studentEmail = emailInput.value.trim();
+      state.isMissedRetry = false;
+
+      const pool = getFilteredPool(state.selectedTier, state.selectedMode);
+      const shuffledPool = shuffleArray(pool);
+      const chosenSlice = shuffledPool.slice(0, Math.min(state.selectedCount, shuffledPool.length));
+
+      launchQuizSession(chosenSlice);
+    }
+
+    // =========================================================================
+    // 5. QUIZ ENGINE
+    // =========================================================================
+    function launchQuizSession(rawQuestions) {
+      state.activeQuestions = rawQuestions.map(prepareQuestionWithShuffledOptions);
+      state.currentIndex = 0;
+      state.score = 0;
+      state.answeredCurrent = false;
+      state.userResponses = [];
+
+      document.getElementById('headerStudentName').textContent = state.studentName;
+      document.getElementById('headerControls').classList.remove('hidden');
+
+      document.getElementById('startScreen').classList.add('hidden');
+      document.getElementById('resultsScreen').classList.add('hidden');
+      document.getElementById('quizScreen').classList.remove('hidden');
+
+      renderCurrentQuestion();
+    }
+
+    function renderCurrentQuestion() {
+      const item = state.activeQuestions[state.currentIndex];
+      const total = state.activeQuestions.length;
+      const qNum = state.currentIndex + 1;
+      state.answeredCurrent = false;
+
+      const tierLabels = {
+        foundation: 'Foundation Tier',
+        higher: 'Higher Tier',
+        separate: 'Separate Biology'
+      };
+      const tierBadge = document.getElementById('quizTierBadge');
+      tierBadge.textContent = state.isMissedRetry ? 'Missed Questions Drill' : tierLabels[state.selectedTier];
+
+      document.getElementById('quizTopicBadge').textContent = item.topic;
+
+      const focusBadge = document.getElementById('quizFocusBadge');
+      if (item.isPractical) {
+        focusBadge.classList.remove('hidden');
+      } else {
+        focusBadge.classList.add('hidden');
+      }
+
+      document.getElementById('questionCounterText').textContent = `Question ${qNum} of ${total}`;
+      document.getElementById('liveScoreText').textContent = state.score;
+      const pct = Math.round(((qNum - 1) / total) * 100);
+      document.getElementById('quizProgressBar').style.width = `${Math.max(4, pct)}%`;
+
+      document.getElementById('questionPrompt').textContent = item.question;
+      document.getElementById('feedbackBox').classList.add('hidden');
+
+      const container = document.getElementById('optionsContainer');
+      container.innerHTML = '';
+      const letters = ['A', 'B', 'C', 'D'];
+
+      item.shuffledOptions.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'option-card w-full text-left p-4 rounded-xl border-2 border-slate-200 bg-slate-50 hover:bg-teal-50/50 hover:border-teal-500 flex items-start gap-3.5 focus:outline-none';
+        btn.innerHTML = `
+          <span class="option-letter w-7 h-7 rounded-lg bg-white border border-slate-300 text-slate-700 font-extrabold text-xs flex items-center justify-center shrink-0 mt-0.5">
+            ${letters[idx]}
+          </span>
+          <span class="text-sm sm:text-base font-medium text-slate-800 leading-snug">
+            ${opt.text}
+          </span>
+        `;
+        btn.onclick = () => handleAnswerSelection(idx);
+        container.appendChild(btn);
+      });
+    }
+
+    function handleAnswerSelection(chosenIdx) {
+      if (state.answeredCurrent) return;
+      state.answeredCurrent = true;
+
+      const item = state.activeQuestions[state.currentIndex];
+      const isCorrect = chosenIdx === item.shuffledAnswerIndex;
+
+      if (isCorrect) {
+        state.score++;
+        document.getElementById('liveScoreText').textContent = state.score;
+      }
+
+      state.userResponses.push({
+        questionObj: item,
+        chosenIndex: chosenIdx,
+        isCorrect: isCorrect
+      });
+
+      const optionBtns = document.querySelectorAll('#optionsContainer .option-card');
+      optionBtns.forEach((btn, idx) => {
+        btn.disabled = true;
+        const letterBadge = btn.querySelector('.option-letter');
+        btn.classList.remove('hover:bg-teal-50/50', 'hover:border-teal-500', 'bg-slate-50', 'border-slate-200');
+
+        if (idx === item.shuffledAnswerIndex) {
+          btn.classList.add('bg-emerald-50', 'border-emerald-500');
+          letterBadge.classList.remove('bg-white', 'border-slate-300', 'text-slate-700');
+          letterBadge.classList.add('bg-emerald-600', 'border-emerald-600', 'text-white');
+        } else if (idx === chosenIdx && !isCorrect) {
+          btn.classList.add('bg-rose-50', 'border-rose-500');
+          letterBadge.classList.remove('bg-white', 'border-slate-300', 'text-slate-700');
+          letterBadge.classList.add('bg-rose-600', 'border-rose-600', 'text-white');
+        } else {
+          btn.classList.add('bg-slate-50', 'border-slate-200', 'opacity-60');
+        }
+      });
+
+      const feedbackBox = document.getElementById('feedbackBox');
+      const feedbackIcon = document.getElementById('feedbackIcon');
+      const feedbackHeading = document.getElementById('feedbackHeading');
+      const feedbackExplanation = document.getElementById('feedbackExplanation');
+
+      feedbackBox.classList.remove('hidden', 'bg-emerald-50/70', 'border-emerald-300', 'bg-rose-50/70', 'border-rose-300');
+      feedbackIcon.classList.remove('bg-emerald-600', 'bg-rose-600', 'text-white');
+
+      if (isCorrect) {
+        feedbackBox.classList.add('bg-emerald-50/70', 'border-emerald-300');
+        feedbackIcon.classList.add('bg-emerald-600', 'text-white');
+        feedbackIcon.textContent = '✓';
+        feedbackHeading.textContent = 'Correct! Mark Awarded';
+        feedbackHeading.className = 'font-extrabold text-base text-emerald-900';
+        feedbackExplanation.className = 'text-sm mt-1.5 leading-relaxed text-emerald-900/90';
+      } else {
+        feedbackBox.classList.add('bg-rose-50/70', 'border-rose-300');
+        feedbackIcon.classList.add('bg-rose-600', 'text-white');
+        feedbackIcon.textContent = '✕';
+        feedbackHeading.textContent = 'Incorrect — Review AQA Examiner Note';
+        feedbackHeading.className = 'font-extrabold text-base text-rose-900';
+        feedbackExplanation.className = 'text-sm mt-1.5 leading-relaxed text-rose-900/90';
+      }
+
+      feedbackExplanation.textContent = item.explanation;
+
+      const isLast = state.currentIndex === state.activeQuestions.length - 1;
+      document.getElementById('nextBtnText').textContent = isLast ? 'View Diagnostic Report' : 'Next Question';
+
+      const total = state.activeQuestions.length;
+      const pct = Math.round(((state.currentIndex + 1) / total) * 100);
+      document.getElementById('quizProgressBar').style.width = `${pct}%`;
+    }
+
+    function handleNextQuestion() {
+      if (state.currentIndex < state.activeQuestions.length - 1) {
+        state.currentIndex++;
+        renderCurrentQuestion();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        showDiagnosticReport();
+      }
+    }
+
+    // =========================================================================
+    // 6. DIAGNOSTIC REPORT & EXPORT
+    // =========================================================================
+    function estimateGcseGrade(pct, tier) {
+      if (tier === 'foundation') {
+        if (pct >= 80) return 'Grade 5';
+        if (pct >= 65) return 'Grade 4';
+        if (pct >= 50) return 'Grade 3';
+        if (pct >= 35) return 'Grade 2';
+        return 'Grade 1';
+      } else {
+        if (pct >= 85) return 'Grade 9';
+        if (pct >= 75) return 'Grade 8';
+        if (pct >= 65) return 'Grade 7';
+        if (pct >= 55) return 'Grade 6';
+        if (pct >= 45) return 'Grade 5';
+        if (pct >= 35) return 'Grade 4';
+        return 'Grade 3';
+      }
+    }
+
+    function showDiagnosticReport() {
+      document.getElementById('quizScreen').classList.add('hidden');
+      document.getElementById('resultsScreen').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      const total = state.activeQuestions.length;
+      const pct = Math.round((state.score / total) * 100);
+
+      const tierNames = {
+        foundation: 'Foundation Tier',
+        higher: 'Higher Tier',
+        separate: 'Separate Biology'
+      };
+      const modeName = state.isMissedRetry
+        ? 'Targeted Missed Questions Retry'
+        : (state.selectedMode === 'rp' ? 'Required Practicals Only' : 'All Homeostasis & Response Topics');
+
+      document.getElementById('reportStudentTitle').textContent = `Diagnostic Report: ${state.studentName}`;
+      document.getElementById('reportMetaSubtitle').textContent = `${tierNames[state.selectedTier]} • ${modeName}`;
+      document.getElementById('reportPercentage').textContent = `${pct}%`;
+      document.getElementById('reportFraction').textContent = `${state.score} / ${total} Correct`;
+      document.getElementById('reportGradeBadge').textContent = estimateGcseGrade(pct, state.selectedTier);
+
+      const missedItems = state.userResponses.filter(r => !r.isCorrect);
+      const retryBtn = document.getElementById('retryMissedBtn');
+      if (missedItems.length > 0) {
+        retryBtn.classList.remove('hidden');
+        document.getElementById('missedCountLabel').textContent = missedItems.length;
+      } else {
+        retryBtn.classList.add('hidden');
+      }
+
+      const topicMap = {};
+      state.userResponses.forEach(res => {
+        const t = res.questionObj.topic;
+        if (!topicMap[t]) {
+          topicMap[t] = { correct: 0, total: 0 };
+        }
+        topicMap[t].total++;
+        if (res.isCorrect) topicMap[t].correct++;
+      });
+
+      const breakdownContainer = document.getElementById('topicBreakdownContainer');
+      breakdownContainer.innerHTML = '';
+
+      Object.entries(topicMap).forEach(([topicName, stats]) => {
+        const topicPct = Math.round((stats.correct / stats.total) * 100);
+        let barColor = 'bg-emerald-500';
+        let badgeStyle = 'bg-emerald-100 text-emerald-800';
+        let statusLabel = 'Strong';
+
+        if (topicPct < 50) {
+          barColor = 'bg-rose-500';
+          badgeStyle = 'bg-rose-100 text-rose-800';
+          statusLabel = 'Revise Priority';
+        } else if (topicPct < 70) {
+          barColor = 'bg-amber-500';
+          badgeStyle = 'bg-amber-100 text-amber-800';
+          statusLabel = 'Needs Revision';
+        }
+
+        const row = document.createElement('div');
+        row.className = 'p-4 rounded-xl bg-slate-50 border border-slate-200';
+        row.innerHTML = `
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+            <span class="font-bold text-sm text-slate-900">${topicName}</span>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-bold px-2.5 py-0.5 rounded-full ${badgeStyle}">${statusLabel}</span>
+              <span class="text-xs font-extrabold text-slate-700">${stats.correct}/${stats.total} (${topicPct}%)</span>
+            </div>
+          </div>
+          <div class="w-full h-2.5 bg-slate-200 rounded-full overflow-hidden">
+            <div class="h-full ${barColor} rounded-full transition-all duration-500" style="width: ${topicPct}%;"></div>
+          </div>
+        `;
+        breakdownContainer.appendChild(row);
+      });
+
+      const reviewList = document.getElementById('questionReviewList');
+      reviewList.innerHTML = '';
+
+      state.userResponses.forEach((res, idx) => {
+        const item = res.questionObj;
+        const chosenText = item.shuffledOptions[res.chosenIndex].text;
+        const correctText = item.shuffledOptions[item.shuffledAnswerIndex].text;
+
+        const card = document.createElement('div');
+        card.className = `p-4 sm:p-5 rounded-xl border-2 ${res.isCorrect ? 'border-emerald-200 bg-emerald-50/30' : 'border-rose-200 bg-rose-50/30'}`;
+        card.innerHTML = `
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <span class="text-xs font-extrabold uppercase tracking-wider ${res.isCorrect ? 'text-emerald-700' : 'text-rose-700'}">
+              Question ${idx + 1} &bull; ${res.isCorrect ? 'Correct' : 'Incorrect'}
+            </span>
+            <span class="text-xs font-semibold text-slate-500">${item.topic}</span>
+          </div>
+          <p class="font-bold text-sm sm:text-base text-slate-900 mb-3">${item.question}</p>
+          <div class="space-y-1.5 text-xs sm:text-sm">
+            <p class="${res.isCorrect ? 'text-emerald-800 font-semibold' : 'text-rose-800 font-semibold'}">
+              Your answer: ${chosenText}
+            </p>
+            ${!res.isCorrect ? `<p class="text-emerald-800 font-bold">Correct answer: ${correctText}</p>` : ''}
+            <p class="text-slate-600 pt-1.5 border-t border-slate-200/80 mt-2">
+              <strong class="text-slate-800">Mark Scheme Note:</strong> ${item.explanation}
+            </p>
+          </div>
+        `;
+        reviewList.appendChild(card);
+      });
+
+      const summaryText = buildPlainTextReport();
+      const subject = encodeURIComponent(`AQA GCSE Homeostasis & Response Quiz Results — ${state.studentName} (${pct}%)`);
+      const body = encodeURIComponent(summaryText);
+      const recipient = state.studentEmail ? encodeURIComponent(state.studentEmail) : '';
+      document.getElementById('emailResultsLink').href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    }
+
+    function buildPlainTextReport() {
+      const total = state.activeQuestions.length;
+      const pct = Math.round((state.score / total) * 100);
+      const estGrade = estimateGcseGrade(pct, state.selectedTier);
+      const tierNames = {
+        foundation: 'Foundation Tier',
+        higher: 'Higher Tier',
+        separate: 'Separate Biology'
+      };
+      const modeName = state.selectedMode === 'rp'
+        ? 'Required Practicals Only'
+        : 'All Homeostasis & Response Topics';
+
+      const topicMap = {};
+      state.userResponses.forEach(res => {
+        const t = res.questionObj.topic;
+        if (!topicMap[t]) topicMap[t] = { correct: 0, total: 0 };
+        topicMap[t].total++;
+        if (res.isCorrect) topicMap[t].correct++;
+      });
+
+      const breakdownLines = Object.entries(topicMap)
+        .map(([t, s]) => `- ${t}: ${s.correct}/${s.total} (${Math.round((s.correct / s.total) * 100)}%)`)
+        .join('\n');
+
+      return [
+        `Mr Leek Science — AQA GCSE Homeostasis & Response Revision Quiz`,
+        `Student: ${state.studentName}`,
+        `Pathway: ${tierNames[state.selectedTier]} | Focus: ${modeName}`,
+        `Overall Score: ${state.score} / ${total} (${pct}% — ${estGrade})`,
+        ``,
+        `Topic Breakdown:`,
+        breakdownLines
+      ].join('\n');
+    }
+
+    function copyResultsSummary() {
+      const text = buildPlainTextReport();
+      const tempArea = document.createElement('textarea');
+      tempArea.value = text;
+      tempArea.style.position = 'fixed';
+      tempArea.style.left = '-9999px';
+      document.body.appendChild(tempArea);
+      tempArea.select();
+      try {
+        document.execCommand('copy');
+        const label = document.getElementById('copyBtnLabel');
+        label.textContent = 'Copied to Clipboard ✓';
+        setTimeout(() => {
+          label.textContent = 'Copy Results Summary';
+        }, 2500);
+      } catch (err) {
+        // Fallback if blocked
+      }
+      document.body.removeChild(tempArea);
+    }
+
+    function startMissedQuestionsQuiz() {
+      const missedRaw = state.userResponses
+        .filter(r => !r.isCorrect)
+        .map(r => r.questionObj);
+
+      if (missedRaw.length === 0) return;
+      state.isMissedRetry = true;
+      launchQuizSession(shuffleArray(missedRaw));
+    }
+
+    // =========================================================================
+    // 7. NAVIGATION & MODAL HELPERS
+    // =========================================================================
+    function confirmReturnHome() {
+      const quizVisible = !document.getElementById('quizScreen').classList.contains('hidden');
+      if (quizVisible && state.userResponses.length > 0) {
+        document.getElementById('confirmModal').classList.remove('hidden');
+      } else {
+        returnToMenu();
+      }
+    }
+
+    function closeConfirmModal() {
+      document.getElementById('confirmModal').classList.add('hidden');
+    }
+
+    function returnToMenu() {
+      closeConfirmModal();
+      document.getElementById('quizScreen').classList.add('hidden');
+      document.getElementById('resultsScreen').classList.add('hidden');
+      document.getElementById('headerControls').classList.add('hidden');
+      document.getElementById('startScreen').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      selectTier('higher');
+      selectMode('all');
+      selectCount(20);
+    });
+  </script>
+</body>
+</html>
